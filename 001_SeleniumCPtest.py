@@ -13,7 +13,7 @@ from selenium.webdriver.support.ui import Select
 driver = webdriver.Firefox()
 driver.get("http://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
-time.sleep(1)
+time.sleep(2)
 wait = WebDriverWait(driver, 10)
 driver.implicitly_wait(10)
 
