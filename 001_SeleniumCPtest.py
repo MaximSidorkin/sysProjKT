@@ -15,11 +15,11 @@ driver.get("http://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
 time.sleep(1)
 wait = WebDriverWait(driver, 10)
+driver.implicitly_wait(10)
 
 class ASeleniumLogin_1(unittest.TestCase):
     def test001_LoginInEORDev(self):
         assert "Login" in driver.title
-        # wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
         elem.send_keys("Ipad")
