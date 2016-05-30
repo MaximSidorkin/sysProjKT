@@ -175,7 +175,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "Error" not in driver.title
         print(' finish!')
 
-
 if __name__ == '__main__':
     unittest.main()
 
