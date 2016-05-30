@@ -1,3 +1,4 @@
+# СОЗДАНИЕ КОНТРОЛЬНОЙ ТОЧКИ ИЗ БЛОКА ПРОЕКТОВ
 import unittest
 import time
 global str
@@ -58,7 +59,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         elemSearch = driver.find_element_by_id('search-text')
         elemSearch.click()
-        elemSearch.send_keys('Для контрольной точки')
+        elemSearch.send_keys('Selenium')
         elemSearch.send_keys(Keys.ENTER)
         time.sleep(2)
         assert "500" not in driver.title  # проверка на 500/404 ошибку
@@ -88,12 +89,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         scrollDown.click()
         scrollDown = driver.find_element_by_xpath('//form/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/input')
         scrollDown.click()
-        scrollDown.send_keys("Тестовый проект созданный Selenium")
-        time.sleep(1)
+        scrollDown.send_keys("Тестовый проект созданный Selenium")#+ Keys.ARROW_DOWN + Keys.ENTER)
+        time.sleep(2)
         #scrollDown = driver.find_element_by_xpath('//form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/ul/li[14]/i')   #span class
         #scrollDown.click()
         #time.sleep(1)
-        scrollDown = driver.find_element(By.XPATH, "//a[@id='parent9138_anchor']/span")
+        scrollDown = driver.find_element_by_link_text('Тестовый проект созданный Selenium')
         scrollDown.click()
         time.sleep(1)
 
@@ -107,13 +108,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         nameShort = driver.find_element_by_id('Checkpoint_PLANNED_RESULT').send_keys('Комментарий')
     def test010_Autor(self):
         autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
-        autorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Багреева' + Keys.ENTER)
+        autorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
     def test011_Responsible(self):
         responsibleName = driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
-        responsibleName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Багреева' + Keys.ENTER)
+        responsibleName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
     def test012_Executor(self):
         executorName = driver.find_element_by_id('DIV_ID_EXECUTOR').click()
-        executorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Багреева' + Keys.ENTER)
+        executorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
     def test013_deadline(self):
         deadline = driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('12345' + Keys.ENTER)
     def test014_source(self):
@@ -146,9 +147,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         prior = driver.find_element_by_xpath('//form/div/div[2]/div[18]/div/div/div/label').click()
         time.sleep(1)
-        done = driver.find_element_by_xpath('//form/div/div[2]/div[19]/div/div[1]/div/label').click()
+        done = driver.find_element_by_xpath("//div[20]/div/div/div/label").click()
         time.sleep(1)
-        visible = driver.find_element_by_xpath('//div[22]/div[1]/div[2]/div[3]/div/div/div/label').click()
+        visible = driver.find_element_by_xpath('//div[3]/div/div/div/label').click()
     def test022_addAttach(self):
         addlink = driver.find_element_by_xpath('//div[@id="DIV_FILES"]/div/div/div[2]/ul/li[2]/a/span').click()
         time.sleep(1)
@@ -163,7 +164,7 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test024_delCP(self):
         _ = wait.until(EC.element_to_be_clickable((By.NAME, 'yt2')))
         delete = driver.find_element_by_name('yt2').click()
-        time.sleep(1)
+        time.sleep(2)
         driver.implicitly_wait(10)
         #_ = wait.until(EC.element_to_be_clickable((By.XPATH, 'html/body/div[3]/div[3]/div/button[1]')))
         delete = driver.find_element_by_xpath('//div[3]/div/button')
