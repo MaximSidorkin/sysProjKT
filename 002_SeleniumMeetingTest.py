@@ -1,5 +1,14 @@
 import unittest
 import time
+#import pytest
+import xmlrunner
+import os
+import HTMLTestRunner
+
+#import io
+from io import StringIO
+#from email.generator import Generator
+#fp = StringIO()
 global str
 
 from selenium import webdriver
@@ -72,11 +81,31 @@ class ASeleniumLogin_1(unittest.TestCase):
         triggerOffer = driver.find_element_by_xpath('//form[@id="meetings-form"]/div[13]/div/div/div/span[2]').click()
         time.sleep(2)
         triggerOffer = driver.find_element_by_xpath("//form[@id='meetings-form']/div[13]/div/div/div/span").click()
+        driver.save_screenshot('C:\PyTest\inish.png')
 
+    def test006_Confirm(self):
+        time.sleep(2)
+        driver.find_element_by_name('yt0').click()
         print(' finish')
 
 
 
 
+
 if __name__ == '__main__':
+    #unittest.main(testRunner=xmlrunner.XMLTestRunner(output=dir))
+
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
+    # File
+    dir = os.getcwd()
+    dateTimeStamp = time.strftime('%Y%m%d_%H_%M_%S')
+    buf = open(dir+"TestReport" + "_" + dateTimeStamp + ".html", 'wb')
+    runner = HTMLTestRunner.HTMLTestRunner(
+        stream=buf,
+        title='Test the Report',  # Заголовок отчета
+        description='Result of tests'  # Описание отчета
+    )
+    runner.run(suite)
+    # unittest.main(testRunner=xmlrunner.XMLTestRunner(output='C:\PyTest'))
     unittest.main()

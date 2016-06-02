@@ -145,7 +145,7 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test021_AllTriggersClose(self):
         kpi = driver.find_element_by_css_selector('span.switch-left').click()
         time.sleep(1)
-        prior = driver.find_element_by_xpath('//form/div/div[2]/div[18]/div/div/div/label').click()
+        #prior = driver.find_element_by_xpath('//form/div/div[2]/div[18]/div/div/div/label').click()
         time.sleep(1)
         done = driver.find_element_by_xpath("//div[20]/div/div/div/label").click()
         time.sleep(1)
