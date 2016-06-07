@@ -94,7 +94,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         #scrollDown = driver.find_element_by_xpath('//form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/ul/li[14]/i')   #span class
         #scrollDown.click()
         #time.sleep(1)
-        scrollDown = driver.find_element_by_link_text('Тестовый проект созданный Selenium')
+        scrollDown = driver.find_element_by_link_text('Тестовый проект созданный Selenium edit')
         scrollDown.click()
         time.sleep(1)
 
