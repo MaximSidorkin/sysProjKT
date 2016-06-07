@@ -71,9 +71,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         responsibleName = driver.find_element_by_xpath('//body[@id="ui-id-1"]/span/span/span/input').send_keys('Багреева' + Keys.ENTER)
         comment = driver.find_element_by_id('MeetingsData_S_COMMENT').send_keys('комментарий к совещанию')
         meetingDateB = driver.find_element_by_id('MeetingsData_D_START').clear()
-        meetingDateB = driver.find_element_by_id('MeetingsData_D_START').send_keys('19:00' + Keys.ENTER)
+        meetingDateB = driver.find_element_by_id('MeetingsData_D_START').send_keys('19:01' + Keys.ENTER)
         meetingDateE = driver.find_element_by_id('MeetingsData_D_END').clear()
-        meetingDateE = driver.find_element_by_id('MeetingsData_D_END').send_keys('20:00' + Keys.ENTER)
+        meetingDateE = driver.find_element_by_id('MeetingsData_D_END').send_keys('20:01' + Keys.ENTER)
         triggerAllDay = driver.find_element_by_css_selector('span.switch-right').click()
         time.sleep(2)
         triggerAllDay = driver.find_element_by_css_selector('span.switch-left').click()
@@ -82,30 +82,46 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         triggerOffer = driver.find_element_by_xpath("//form[@id='meetings-form']/div[13]/div/div/div/span").click()
         driver.save_screenshot('C:\PyTest\inish.png')
-
+    #@unittest.skip('Test Skipped1')
     def test006_Confirm(self):
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
-        print(' finish')
-
-
-
-
+    def test007_FindAndEditMeeting(self):
+        time.sleep(4)
+        driver.implicitly_wait(10)
+        newMeet = driver.find_element_by_xpath("//span[. = '19:01 - 20:01' ]")
+        newMeet.click()
+        time.sleep(3)
+        editButton = driver.find_element_by_xpath("//button[2]").click()
+        time.sleep(3)
+        project = driver.find_element_by_id('ncp-text').click()
+        time.sleep(1)
+        project = driver.find_element_by_xpath("//div[@id='ncp-tree-container']/div/input").send_keys('Тестовый проект созданный Selenium edit')
+        time.sleep(1)
+        project = driver.find_element_by_css_selector('span.find-text').click()
+        time.sleep(1)
+        missionButton = driver.find_element_by_id('mission-btn').click()
+        time.sleep(2)
+        # заполняем название поручения
+        driver.find_element_by_id('Checkpoint_TITLE').send_keys('Название поручения Selenium')
+        # автор
+        driver.find_element_by_id('Checkpoint_ID_AUTHOR_MISSIONSelectBoxItArrowContainer').click()
+        driver.find_element_by_link_text('Багреева М.А.').click()
+        driver.find_element_by_xpath("//form[@id='mission-form']/div/div/div[4]/div/span/span/span/span[2]").click()
+        # закончит редактирвоание совещания
+        #submit = driver.find_element_by_name("yt1").click()
 
 if __name__ == '__main__':
-    #unittest.main(testRunner=xmlrunner.XMLTestRunner(output=dir))
+    suite = unittest.TestLoader().loadTestsFromTestCase(ASeleniumLogin_1)
 
-    suite = unittest.TestSuite()
-    suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
-    # File
-    dir = os.getcwd()
-    dateTimeStamp = time.strftime('%Y%m%d_%H_%M_%S')
-    buf = open(dir+"TestReport" + "_" + dateTimeStamp + ".html", 'wb')
-    runner = HTMLTestRunner.HTMLTestRunner(
-        stream=buf,
-        title='Test the Report',  # Заголовок отчета
-        description='Result of tests'  # Описание отчета
-    )
+    # I thought you want to run the HTMLTestRunner
+    # unittest.TextTestRunner(verbosity=2).run(suite)
+
+    outfile = open(r"C:\PyTest\TestReport.html", "w")
+    # double \ or raw string r""
+
+    runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title='Test Report', description='This is demo')
     runner.run(suite)
-    # unittest.main(testRunner=xmlrunner.XMLTestRunner(output='C:\PyTest'))
+
+    outfile.close()
     unittest.main()

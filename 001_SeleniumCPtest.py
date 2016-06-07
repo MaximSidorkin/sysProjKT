@@ -126,7 +126,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         dateSource = driver.find_element_by_id('Checkpoint_SOURCE_DATE').send_keys('12345' + Keys.ENTER)
         time.sleep(1)
     def test017_triggerKPI(self):
-        kpi = driver.find_element_by_css_selector('span.switch-right').click()
+        #kpi = driver.find_element_by_css_selector('span.switch-right').click()
         time.sleep(1)
     def test018_triggerPrior(self):
         prior = driver.find_element_by_xpath('//div[@id="DIV_IS_PRIORITY"]/div/div/div/span[2]').click()
@@ -143,7 +143,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         users = driver.find_element_by_xpath('//div[1]/div[2]/div[4]/div/span/span[1]/span/ul/li/input').send_keys(Keys.ENTER)
         #users.send_keys("Багреева" + Keys.ENTER)
     def test021_AllTriggersClose(self):
-        kpi = driver.find_element_by_css_selector('span.switch-left').click()
+        #kpi = driver.find_element_by_css_selector('span.switch-left').click()
         time.sleep(1)
         #prior = driver.find_element_by_xpath('//form/div/div[2]/div[18]/div/div/div/label').click()
         time.sleep(1)
