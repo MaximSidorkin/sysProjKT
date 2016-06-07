@@ -151,8 +151,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         visible = driver.find_element_by_xpath('//div[3]/div/div/div/label').click()
     def test022_addAttach(self):
+        time.sleep(2)
         addlink = driver.find_element_by_xpath('//div[@id="DIV_FILES"]/div/div/div[2]/ul/li[2]/a/span').click()
-        time.sleep(1)
+        time.sleep(2)
         textLink = driver.find_element_by_xpath('//div[2]/div[2]/input').send_keys('Yandex')
         link = driver.find_element_by_xpath('//div[2]/div[2]/input[2]').send_keys('ya.ru')
         uploadLink = driver.find_element_by_xpath('//span[3]/span').click()
