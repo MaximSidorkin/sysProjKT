@@ -1,3 +1,4 @@
+# СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ СОВЕЩАНИЯ ИЗ БЛОКА "РАСПИСАНИЕ"
 import unittest
 import time
 #import pytest
@@ -9,7 +10,7 @@ import HTMLTestRunner
 from io import StringIO
 #from email.generator import Generator
 #fp = StringIO()
-global str
+#global str
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -107,8 +108,24 @@ class ASeleniumLogin_1(unittest.TestCase):
         # автор
         driver.find_element_by_id('Checkpoint_ID_AUTHOR_MISSIONSelectBoxItArrowContainer').click()
         driver.find_element_by_link_text('Багреева М.А.').click()
+        # ответственный
         driver.find_element_by_xpath("//form[@id='mission-form']/div/div/div[4]/div/span/span/span/span[2]").click()
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('А'+Keys.ENTER)
+        # deadline
+        driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123'+Keys.ENTER)
+        # проект
+        driver.find_element_by_id('mission-text').click()
+        driver.find_element_by_xpath('//div[10]/div/div[1]/div[2]/div[1]/input').send_keys('КТ номер 2')
+        time.sleep(2)
+        driver.implicitly_wait(10)
+        driver.find_element(By.XPATH(".//*[text()='КТ номер 2']/..")).click()
+        #elem = driver.find_element_by_css_selector("span.find-text").click()
+
+        # driver.find_element_by_css_selector('input.form-control').click()
+        # driver.find_element_by_css_selector('input.form-control').send_keys('Selenium edit')
+        # driver.find_element_by_link_text('Selenium edit').click()
         # закончит редактирвоание совещания
+        driver.find_element_by_id('mission_create')
         #submit = driver.find_element_by_name("yt1").click()
 
 if __name__ == '__main__':
