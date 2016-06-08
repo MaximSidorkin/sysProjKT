@@ -11,7 +11,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 
 # global variable
-
 driver = webdriver.Firefox()
 driver.get("http://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
