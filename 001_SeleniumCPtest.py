@@ -165,14 +165,13 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test024_delCP(self):
         _ = wait.until(EC.element_to_be_clickable((By.NAME, 'yt2')))
         delete = driver.find_element_by_name('yt2').click()
-        time.sleep(3)
+        time.sleep(7)
         driver.implicitly_wait(10)
         #_ = wait.until(EC.element_to_be_clickable((By.XPATH, 'html/body/div[3]/div[3]/div/button[1]')))
-        delete = driver.find_element_by_xpath('html/body/div[5]/div[3]/div/button[1]/span')
-        delete.click()
-        time.sleep(2)
+        delete = driver.find_element_by_xpath('//div[3]/div/button').click()
+        time.sleep(1)
     def test025_noErrorInTitlePage(self):
-        time.sleep(2)
+        time.sleep(1)
         assert "Error" not in driver.title
         print(' finish!')
 
