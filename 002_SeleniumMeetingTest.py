@@ -8,7 +8,7 @@ import HTMLTestRunner
 from selenium.webdriver.support.ui import Select
 
 #import io
-from io import StringIO
+#from io import StringIO
 #from email.generator import Generator
 #fp = StringIO()
 #global str
