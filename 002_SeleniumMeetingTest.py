@@ -11,7 +11,6 @@ from selenium.webdriver.support.ui import Select
 #from io import StringIO
 #from email.generator import Generator
 #fp = StringIO()
-#global str
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
