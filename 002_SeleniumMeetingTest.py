@@ -2,9 +2,9 @@
 import unittest
 import time
 #import pytest
-import xmlrunner
+#import xmlrunner
 import os
-import HTMLTestRunner
+#import HTMLTestRunner
 from selenium.webdriver.support.ui import Select
 
 #import io
