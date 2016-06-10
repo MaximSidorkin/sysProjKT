@@ -249,16 +249,16 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('btn_success_executor').click()
 
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(ASeleniumLogin_1)
+    #suite = unittest.TestLoader().loadTestsFromTestCase(ASeleniumLogin_1)
 
     # I thought you want to run the HTMLTestRunner
     # unittest.TextTestRunner(verbosity=2).run(suite)
 
-    outfile = open(r"C:\PyTest\TestReport.html", "w")
+    #outfile = open(r"C:\PyTest\TestReport.html", "w")
     # double \ or raw string r""
 
-    runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title='Test Report', description='This is demo')
-    runner.run(suite)
+    #runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title='Test Report', description='This is demo')
+    #runner.run(suite)
 
-    outfile.close()
+    #outfile.close()
     unittest.main()
