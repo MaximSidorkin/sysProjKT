@@ -69,7 +69,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         unit = driver.find_element_by_xpath('//form/div[5]/div/span/span[1]/span/ul/li/input').send_keys('Багреева' + Keys.ENTER)
         place = driver.find_element_by_id('MeetingsData_S_PLACE').send_keys('Москва')
         responsibleName = driver.find_element_by_xpath('//div[8]/div/span/span/span/span[2]').click()
-        time.sleep(1)
+        time.sleep(2)
         responsibleName = driver.find_element_by_xpath('//body[@id="ui-id-1"]/span/span/span/input').send_keys('Багреева' + Keys.ENTER)
         comment = driver.find_element_by_id('MeetingsData_S_COMMENT').send_keys('комментарий к совещанию')
         meetingDateB = driver.find_element_by_id('MeetingsData_D_START').clear()
@@ -120,10 +120,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         # проект
         driver.find_element_by_id('mission-text').click()
         driver.find_element_by_xpath('//div[10]/div/div[1]/div[2]/div[1]/input').send_keys('Проект для совещаний Se')
-        time.sleep(2)
+        time.sleep(3)
         # находим в выпадающем списке нужный пункт
         # driver.find_element_by_xpath("//*[@id='mission9871_anchor']/descendant::span[text()='Тестовый проект созданный selenium edit']")
-        driver.find_element_by_xpath('//form/div/div/div[10]/div/div[1]/div[2]/div[2]/ul/li[15]/ul/li/a/span/span').click()
+        driver.implicitly_wait(10)
+        # driver.find_element_by_css_selector('span.find-text').click()
+        driver.find_element_by_xpath('//form/div/div/div[10]/div/div[1]/div[2]/div[2]/ul/li[31]/ul/li/a/span/span').click()
         # закончит редактирвоание совещания
         driver.find_element_by_id('mission_create').click()
         time.sleep(2)
