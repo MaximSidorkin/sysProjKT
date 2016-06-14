@@ -4,7 +4,7 @@ import time
 #import pytest
 #import xmlrunner
 import os
-#import HTMLTestRunner
+import HTMLTestRunner
 from selenium.webdriver.support.ui import Select
 
 #import io
@@ -21,7 +21,7 @@ from selenium.webdriver.support.ui import Select
 
 # global variable
 driver = webdriver.Firefox()
-driver.get("http://dev.eor.gosapi.ru/site/login")
+driver.get("https://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 10)
@@ -249,16 +249,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('btn_success_executor').click()
 
 if __name__ == '__main__':
-    #suite = unittest.TestLoader().loadTestsFromTestCase(ASeleniumLogin_1)
-
-    # I thought you want to run the HTMLTestRunner
-    # unittest.TextTestRunner(verbosity=2).run(suite)
-
-    #outfile = open(r"C:\PyTest\TestReport.html", "w")
-    # double \ or raw string r""
-
-    #runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title='Test Report', description='This is demo')
-    #runner.run(suite)
-
-    #outfile.close()
-    unittest.main()
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
+    # File
+    buf = open("Report.html", 'wb')
+    runner = HTMLTestRunner.HTMLTestRunner(
+        stream=buf,
+        title='Test the Report',
+        description='Result of tests'
+    )
+    runner.run(suite)
