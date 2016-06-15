@@ -66,7 +66,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Совещение созданное Selenium')
         invite = driver.find_element_by_id('MeetingsData_S_INVITED').send_keys('Внешнее приглашение Selenium')
         unit = driver.find_element_by_css_selector('ul.select2-selection__rendered').click()
-        unit = driver.find_element_by_xpath('//form/div[5]/div/span/span[1]/span/ul/li/input').send_keys('Багреева' + Keys.ENTER)
+        unit = driver.find_element_by_xpath('//form/div[5]/div/span/span[1]/span/ul/li/input').send_keys('Соловьев Е' + Keys.ENTER)
         place = driver.find_element_by_id('MeetingsData_S_PLACE').send_keys('Москва')
         responsibleName = driver.find_element_by_xpath('//div[8]/div/span/span/span/span[2]').click()
         time.sleep(2)
@@ -85,9 +85,11 @@ class ASeleniumLogin_1(unittest.TestCase):
         triggerOffer = driver.find_element_by_xpath("//form[@id='meetings-form']/div[13]/div/div/div/span").click()
         driver.save_screenshot('C:\PyTest\inish.png')
     #@unittest.skip('Test Skipped1')
+
     def test006_Confirm(self):
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
+
     def test007_FindAndEditMeeting(self):
         time.sleep(4)
         driver.implicitly_wait(10)
@@ -155,6 +157,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element(By.XPATH,".//*[text()='Удалить']/..").click()
         time.sleep(2)
+        driver.implicitly_wait(15)
         driver.find_element(By.XPATH, ".//*[text()='Да']/..").click()
 
     def test012_AllDayMeeting(self):
@@ -203,7 +206,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test015_GotoScheduller(self):
         time.sleep(3)
-        schedul = driver.find_element_by_link_text("Расписание").click()
+        driver.find_element_by_link_text("Расписание").click()
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'add-meeting')))
 
     def test016_SearchDTMeeting(self):
@@ -249,6 +252,18 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_xpath('//ul[5]/li/ul/li[3]/div/ul/li[8]/div/label[1]/div').click()
         time.sleep(1)
         driver.find_element_by_id('btn_success_executor').click()
+
+    def test019_CreateMeetingCopy(self):
+        time.sleep(3)
+        driver.find_element_by_link_text("Расписание").click()
+        _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'add-meeting')))
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]").click()
+        time.sleep(3)
+        driver.find_element(By.XPATH, ".//*[text()='Создать копию']/..").click()
+        time.sleep(3)
+        driver.find_element_by_name('yt0').click()
+
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
