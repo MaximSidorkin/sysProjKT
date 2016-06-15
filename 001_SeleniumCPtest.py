@@ -2,6 +2,7 @@
 import unittest
 import time
 global str
+import HTMLTestRunner
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -176,5 +177,14 @@ class ASeleniumLogin_1(unittest.TestCase):
         print(' finish!')
 
 if __name__ == '__main__':
-    unittest.main()
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
+    # File
+    buf = open("СОЗДАНИЕ КОНТРОЛЬНОЙ ТОЧКИ ИЗ БЛОКА ПРОЕКТОВ.html", 'wb')
+    runner = HTMLTestRunner.HTMLTestRunner(
+        stream=buf,
+        title='Test the Report',
+        description='Result of tests'
+    )
+    runner.run(suite)
 

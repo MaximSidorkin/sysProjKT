@@ -36,11 +36,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         elem = driver.find_element_by_id("LoginForm_password")
         elem.send_keys("ipad")
         elem.send_keys(Keys.RETURN)
+        print('тест №1 - логинимся в систему')
 
     def test002_Not500or404andLoginIsVisible(self):
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
+        print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
         try:
             driver.find_element_by_class_name('hidden-xs')
         except:
@@ -56,10 +58,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         schedul = driver.find_element_by_link_text("Расписание")
         schedul.click()
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'add-meeting')))
+        print('тест №3 - переход в раздел "Расписание"')
 
     def test004_ClickCreateMeeting(self):
         time.sleep(1)
         crMeeting = driver.find_element_by_xpath('//div[@id="bs-example-navbar-collapse-3"]/div[6]/div[2]').click()
+        print('тест №4 - нажимаем кнопку "Создать" на открывшейся форме')
 
     def test005_FillingMeetingForm(self):
         time.sleep(3)
@@ -84,11 +88,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         triggerOffer = driver.find_element_by_xpath("//form[@id='meetings-form']/div[13]/div/div/div/span").click()
         driver.save_screenshot('C:\PyTest\inish.png')
+        print('тест №5 - заполняем форму создания совещания')
     #@unittest.skip('Test Skipped1')
 
     def test006_Confirm(self):
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
+        print('тест №6 - подтверждаем создание совещание')
 
     def test007_FindAndEditMeeting(self):
         time.sleep(4)
@@ -106,6 +112,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         missionButton = driver.find_element_by_id('mission-btn').click()
         time.sleep(2)
+        print('тест №7 - находим созданное совещание и редактируем его')
+
     def test008_FillingCommissionForm(self):
         # заполняем название поручения
         driver.find_element_by_id('Checkpoint_TITLE').send_keys('Название поручения Selenium')
@@ -133,8 +141,11 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_id('mission_close').click()
         time.sleep(2)
+        print('тест №8 - создаем поучение и заполняем его форму')
+
     def test009_Close(self):
         driver.find_element_by_name('yt1').click()
+        print('тест №9 - подтверждаем создание поручения/закрываем форму')
         #submit = driver.find_element_by_name("yt1").click()
 
     def test010_NewCommissionPlus(self):
@@ -148,6 +159,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         ASeleniumLogin_1.test008_FillingCommissionForm(self)
         time.sleep(2)
         driver.find_element_by_id('btn_close').click()
+        print('тест №10 - создаем поручение непосредственно из паспорта совещания путем нажатия кнопки "+"')
 
     def test011_DelMeeting(self):
         time.sleep(2)
@@ -159,6 +171,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.implicitly_wait(15)
         driver.find_element(By.XPATH, ".//*[text()='Да']/..").click()
+        print('тест №11 - удаляем созданное совещание')
 
     def test012_AllDayMeeting(self):
         time.sleep(2)
@@ -170,6 +183,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
         time.sleep(2)
+        print('тест №12 - создаем совещание на весь день')
 
     def test013_DelAllDayMeeting(self):
         #newMeet = driver.find_element_by_xpath("//span[. = 'All Day Selenium' ]").click()
@@ -178,6 +192,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element(By.XPATH, ".//*[text()='Удалить']/..").click()
         time.sleep(2)
         driver.find_element(By.XPATH, ".//*[text()='Да']/..").click()
+        print('тест №13 - удаляем совещание созданное на весь день')
 
     def test014_CreateMeetingFromDT(self):
         time.sleep(2)
@@ -203,11 +218,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         # нажимаем кнопку создать
         driver.find_element_by_name('yt0').click()
+        print('тест №14 - создаем совещание с рабочего стола')
 
     def test015_GotoScheduller(self):
         time.sleep(3)
         driver.find_element_by_link_text("Расписание").click()
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'add-meeting')))
+        print('тест №15 - переходим в раздел "Расписание"')
 
     def test016_SearchDTMeeting(self):
         time.sleep(5)
@@ -215,12 +232,15 @@ class ASeleniumLogin_1(unittest.TestCase):
         newMeet = driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]")
         newMeet.click()
         time.sleep(3)
+        print('тест №16 - находим только что созданное совещение')
+
     def test017_AddCommission(self):
         driver.find_element_by_css_selector('i.fa.fa-plus').click()
         time.sleep(3)
         ASeleniumLogin_1.test008_FillingCommissionForm(self)
         time.sleep(2)
         driver.find_element_by_id('btn_close').click()
+        print('тест №17 - создаем поучение и заполняем его форму')
 
     def test018_FindDTMeetingInReport(self):
         time.sleep(3)
@@ -252,6 +272,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_xpath('//ul[5]/li/ul/li[3]/div/ul/li[8]/div/label[1]/div').click()
         time.sleep(1)
         driver.find_element_by_id('btn_success_executor').click()
+        print('тест №18 - находим в отчетах совещание созданное с рабочего стола, путем задание фильтов')
 
     def test019_CreateMeetingCopy(self):
         time.sleep(3)
@@ -263,6 +284,33 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element(By.XPATH, ".//*[text()='Создать копию']/..").click()
         time.sleep(3)
         driver.find_element_by_name('yt0').click()
+        print('тест №19 - переходим в раздел "Расписание", находим совещание, и создаём его копию')
+
+    def test020_Comment(self):
+        time.sleep(3)
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]").click()
+        time.sleep(3)
+        print('тест №20 - открываем паспорт совещание')
+
+    def test021_printComment(self):
+        driver.find_element_by_name('notes').click()
+        time.sleep(2)
+        commentText = driver.find_element_by_id('NoteMeeting').click()  # send_keys('Hello, World!')
+        commentText = driver.find_element_by_xpath('//textarea').send_keys(' Hello, World! ')
+        saveBtn = driver.find_element_by_css_selector('input.btn').click()
+        print('тест №21 - создаем комментарий')
+
+    def test022_editComment(self):
+        time.sleep(2)
+        ASeleniumLogin_1.test021_printComment(self)
+        print('тест №22 - редактируем комментарий')
+
+    def test023_closeComment(self):
+        time.sleep(1)
+        driver.find_element_by_xpath("//div[@id='notes']/div/div/div[2]/a/i").click()
+        print('тест №23 - закрываем форму комментария')
+
 
 
 if __name__ == '__main__':
