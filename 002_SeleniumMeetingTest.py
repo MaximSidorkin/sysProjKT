@@ -130,12 +130,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         # проект
         driver.find_element_by_id('mission-text').click()
         driver.find_element_by_xpath('//div[10]/div/div[1]/div[2]/div[1]/input').send_keys('Проект для совещаний Se')
-        time.sleep(3)
+        time.sleep(4)
         # находим в выпадающем списке нужный пункт
         # driver.find_element_by_xpath("//*[@id='mission9871_anchor']/descendant::span[text()='Тестовый проект созданный selenium edit']")
         driver.implicitly_wait(10)
+        driver.find_element_by_link_text('Проект для совещаний Se').click()
         # driver.find_element_by_css_selector('span.find-text').click()
-        driver.find_element_by_xpath('//form/div/div/div[10]/div/div[1]/div[2]/div[2]/ul/li[31]/ul/li/a/span/span').click()
+        #>>driver.find_element_by_xpath('//form/div/div/div[10]/div/div[1]/div[2]/div[2]/ul/li[34]/ul/li/a/span/span').click() # //form/div/div/div[10]/div/div[1]/div[2]/div[2]/ul/li[34]/ul/li/a/span/span
         # закончит редактирвоание совещания
         driver.find_element_by_id('mission_create').click()
         time.sleep(2)
@@ -168,9 +169,10 @@ class ASeleniumLogin_1(unittest.TestCase):
         newMeet.click()
         time.sleep(2)
         driver.find_element(By.XPATH,".//*[text()='Удалить']/..").click()
-        time.sleep(2)
+        time.sleep(3)
         driver.implicitly_wait(15)
-        driver.find_element(By.XPATH, ".//*[text()='Да']/..").click()
+        driver.find_element(By.XPATH, "//div[3]/div/button").click()
+        # driver.find_element(By.XPATH, ".//*[text()='Да']/..").click()
         print('тест №11 - удаляем созданное совещание')
 
     def test012_AllDayMeeting(self):
