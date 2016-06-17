@@ -1,3 +1,4 @@
+# СОЗДАНИЕ СОВЕЩАНИЯ ИЗ КОНТРОЛЬНОЙ ТОЧКИ
 import time
 import unittest
 global str
