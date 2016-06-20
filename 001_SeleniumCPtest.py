@@ -90,12 +90,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         scrollDown.click()
         scrollDown = driver.find_element_by_xpath('//form/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/input')
         scrollDown.click()
-        scrollDown.send_keys("Тестовый проект созданный Selenium")#+ Keys.ARROW_DOWN + Keys.ENTER)
+        scrollDown.send_keys("Selenium")#+ Keys.ARROW_DOWN + Keys.ENTER)
         time.sleep(2)
         #scrollDown = driver.find_element_by_xpath('//form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/ul/li[14]/i')   #span class
         #scrollDown.click()
         #time.sleep(1)
-        scrollDown = driver.find_element_by_link_text('Тестовый проект созданный Selenium edit')
+        scrollDown = driver.find_element_by_link_text('Создал Selenium для редактирования')
         scrollDown.click()
         time.sleep(1)
 
