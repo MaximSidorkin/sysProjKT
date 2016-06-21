@@ -214,9 +214,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         place = driver.find_element_by_id('MeetingsData_S_PLACE').send_keys('Москва')
         comment = driver.find_element_by_id('MeetingsData_S_COMMENT').send_keys('комментарий к совещанию')
         meetingDateB = driver.find_element_by_id('MeetingsData_D_START').clear()
-        meetingDateB = driver.find_element_by_id('MeetingsData_D_START').send_keys('19:02' + Keys.ENTER)
+        meetingDateB = driver.find_element_by_id('MeetingsData_D_START').send_keys('19:08' + Keys.ENTER)
         meetingDateE = driver.find_element_by_id('MeetingsData_D_END').clear()
-        meetingDateE = driver.find_element_by_id('MeetingsData_D_END').send_keys('20:02' + Keys.ENTER)
+        meetingDateE = driver.find_element_by_id('MeetingsData_D_END').send_keys('20:08' + Keys.ENTER)
         time.sleep(2)
         # нажимаем кнопку создать
         driver.find_element_by_name('yt0').click()
@@ -231,7 +231,7 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test016_SearchDTMeeting(self):
         time.sleep(5)
         #driver.implicitly_wait(10)
-        newMeet = driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]")
+        newMeet = driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]")
         newMeet.click()
         time.sleep(3)
         print('тест №16 - находим только что созданное совещение')
@@ -291,14 +291,16 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test020_Comment(self):
         time.sleep(3)
         driver.implicitly_wait(10)
-        driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]").click()
+        driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]").click()
         time.sleep(3)
         print('тест №20 - открываем паспорт совещание')
 
     def test021_printComment(self):
         driver.find_element_by_name('notes').click()
-        time.sleep(2)
+        time.sleep(4)
         commentText = driver.find_element_by_id('NoteMeeting').click()  # send_keys('Hello, World!')
+        driver.implicitly_wait(10)
+        time.sleep(4)
         commentText = driver.find_element_by_xpath('//textarea').send_keys(' Hello, World! ')
         saveBtn = driver.find_element_by_css_selector('input.btn').click()
         print('тест №21 - создаем комментарий')
