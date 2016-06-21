@@ -54,7 +54,7 @@ class ASeleniumLogin_1(unittest.TestCase):
             assert 'Error' not in driver.title
         except:
             print('ошибка 500!')
-        time.sleep(3)
+        time.sleep(4)
         wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'i.entypo-menu')))
         menu = driver.find_element_by_css_selector("i.entypo-menu")

@@ -61,7 +61,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №3 - переход в раздел "Расписание"')
 
     def test004_ClickCreateMeeting(self):
-        time.sleep(1)
+        time.sleep(2)
         crMeeting = driver.find_element_by_xpath('//div[@id="bs-example-navbar-collapse-3"]/div[6]/div[2]').click()
         print('тест №4 - нажимаем кнопку "Создать" на открывшейся форме')
 
