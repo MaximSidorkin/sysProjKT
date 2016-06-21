@@ -103,38 +103,58 @@ class ASeleniumLogin_1(unittest.TestCase):
         # заполняем форму КТ
         time.sleep(3)
         #имя контрольной точки
+
     def test008_CPName(self):
         nameCP = driver.find_element_by_id('Checkpoint_TITLE').send_keys('КТ номер 2')
+        time.sleep(1)
+
     def test009_Comment(self):
         nameShort = driver.find_element_by_id('Checkpoint_PLANNED_RESULT').send_keys('Комментарий')
+        time.sleep(1)
+
     def test010_Autor(self):
         autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
         autorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
+        time.sleep(1)
+
     def test011_Responsible(self):
         responsibleName = driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
         responsibleName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
+        time.sleep(1)
+
     def test012_Executor(self):
         executorName = driver.find_element_by_id('DIV_ID_EXECUTOR').click()
         executorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
+        time.sleep(1)
+
     def test013_deadline(self):
         deadline = driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('12345' + Keys.ENTER)
+        time.sleep(1)
+
     def test014_source(self):
         source = driver.find_element_by_id('Checkpoint_SOURCE').send_keys('Источник')
-    def test015_scrollDown(self):
-        editBtn = driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
         time.sleep(1)
+
+    #def test015_scrollDown(self):
+    #    editBtn = driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
+    #    time.sleep(1)
+
     def test016_dateSource(self):
         dateSource = driver.find_element_by_id('Checkpoint_SOURCE_DATE').send_keys('12345' + Keys.ENTER)
         time.sleep(1)
+
     def test017_triggerKPI(self):
         #kpi = driver.find_element_by_css_selector('span.switch-right').click()
         time.sleep(1)
+
     def test018_triggerPrior(self):
         prior = driver.find_element_by_xpath('//div[@id="DIV_IS_PRIORITY"]/div/div/div/span[2]').click()
         time.sleep(1)
+
     def test019_triggerDone(self):
         done = driver.find_element_by_xpath('//div[@id="DIV_IS_DONE"]/div/div/div/span[2]').click()
         time.sleep(1)
+
     def test020_triggerVisible(self):
         visible = driver.find_element_by_xpath('//div[3]/div/div/div/span[2]').click()
         time.sleep(2)
@@ -143,6 +163,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         users.click()
         users = driver.find_element_by_xpath('//div[1]/div[2]/div[4]/div/span/span[1]/span/ul/li/input').send_keys(Keys.ENTER)
         #users.send_keys("Багреева" + Keys.ENTER)
+
     def test021_AllTriggersClose(self):
         #kpi = driver.find_element_by_css_selector('span.switch-left').click()
         time.sleep(1)
@@ -151,6 +172,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         done = driver.find_element_by_xpath("//div[20]/div/div/div/label").click()
         time.sleep(1)
         visible = driver.find_element_by_xpath('//div[3]/div/div/div/label').click()
+
     def test022_addAttach(self):
         time.sleep(2)
         addlink = driver.find_element_by_xpath('//div[@id="DIV_FILES"]/div/div/div[2]/ul/li[2]/a/span').click()
@@ -158,11 +180,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         textLink = driver.find_element_by_xpath('//div[2]/div[2]/input').send_keys('Yandex')
         link = driver.find_element_by_xpath('//div[2]/div[2]/input[2]').send_keys('ya.ru')
         uploadLink = driver.find_element_by_xpath('//span[3]/span').click()
+
     def test023_confirmCreateCP(self):
         time.sleep(1)
         finishBtn = driver.find_element_by_name('yt0').click()
         assert "Error" not in driver.title
         #linkCheck = driver.find_element_by_xpath('//a[contains(text(),"Yandex")]').click()
+
     def test024_delCP(self):
         _ = wait.until(EC.element_to_be_clickable((By.NAME, 'yt2')))
         delete = driver.find_element_by_name('yt2').click()
@@ -171,6 +195,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         #_ = wait.until(EC.element_to_be_clickable((By.XPATH, 'html/body/div[3]/div[3]/div/button[1]')))
         delete = driver.find_element_by_xpath('//div[3]/div/button').click()
         time.sleep(1)
+
     def test025_noErrorInTitlePage(self):
         time.sleep(1)
         assert "Error" not in driver.title
