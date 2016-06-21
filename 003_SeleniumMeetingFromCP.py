@@ -81,14 +81,14 @@ class ASeleniumLogin_1(unittest.TestCase):
         #создаем контрольную точку
         CreateCP = driver.find_element_by_id('create-cp')
         CreateCP.click()
-        time.sleep(2)
+        time.sleep(5)
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
 
     def test009_FillingCPForm(self):
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'create-cp')))
         _ = driver.find_element_by_class_name('warn-cp').text == 'контрольную точку'  # test
-        time.sleep(2)
+        time.sleep(5)
         #имя контрольной точки
         nameCP = driver.find_element_by_id('Checkpoint_TITLE').send_keys("Совещание из КТ созданное Selenium")
         time.sleep(2)
@@ -152,18 +152,18 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "404" not in driver.title
 
     def test014_MeetingCreate(self):
-        time.sleep(3)
+        time.sleep(6)
         nap = driver.find_element_by_id("DIV_N_REALIZATION_TYPE").click()
-        time.sleep(2)
+        time.sleep(4)
         nap = driver.find_element_by_xpath("html/body/span/span/span[1]/input").send_keys("Совещание" + Keys.ENTER)
-        time.sleep(2)
-        EditProject = driver.find_element_by_name('yt0').click()
         time.sleep(4)
         EditProject = driver.find_element_by_name('yt0').click()
-        time.sleep(2)
+        time.sleep(6)
+        EditProject = driver.find_element_by_name('yt0').click()
+        time.sleep(6)
         assert "ЭОР" in driver.title
         NPACr = driver.find_element_by_xpath('//button[text()="Создать совещание"]').click()
-        time.sleep(2)
+        time.sleep(5)
 
     def test015_FillingMeetingForm(self):
         time.sleep(5)
@@ -197,25 +197,25 @@ class ASeleniumLogin_1(unittest.TestCase):
         triggerOffer = driver.find_element_by_xpath("//form[@id='meetings-form']/div[14]/div/div/div/span").click()
 
     def test016_ConfirmMeeting(self):
-        time.sleep(1)
+        time.sleep(3)
         driver.find_element_by_name('yt0').click()
 
     def test017_ConfirmCP(self):
-        time.sleep(3)
+        time.sleep(5)
         t017 = driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
-        time.sleep(1)
+        time.sleep(3)
         t017 = driver.find_element_by_name('yt0').click()
 
     def test018_GotoScheduler(self):
-        time.sleep(4)
+        time.sleep(7)
         schedul = driver.find_element_by_link_text("Расписание")
         schedul.click()
 
     def test019_FindAndDelMeeting(self):
-        time.sleep(4)
+        time.sleep(7)
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//span[. = '19:03 - 20:03' ]").click()
-        time.sleep(3)
+        time.sleep(5)
         # driver.find_element(By.XPATH,".//*[text()='Удалить']/..").click()
         # time.sleep(2)
         # yesButton = driver.find_element(By.XPATH, ".//*[text()='Да']/..")#.click()
