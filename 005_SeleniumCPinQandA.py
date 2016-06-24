@@ -96,7 +96,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         # task_remove
         driver.implicitly_wait(10)
-        driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]").click()
+        driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]").click()
         time.sleep(2)
         driver.find_element_by_css_selector('span.task_remove').click()
         assert not 'Error' in driver.title

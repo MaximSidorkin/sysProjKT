@@ -214,7 +214,7 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test019_FindAndDelMeeting(self):
         time.sleep(7)
         driver.implicitly_wait(10)
-        driver.find_element_by_xpath("//span[. = '19:03 - 20:03' ]").click()
+        driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]").click()
         time.sleep(5)
         # driver.find_element(By.XPATH,".//*[text()='Удалить']/..").click()
         # time.sleep(2)
