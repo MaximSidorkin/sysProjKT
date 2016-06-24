@@ -70,7 +70,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert 'Error' not in driver.title
         time.sleep(2)
         driver.implicitly_wait(10)
-        driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]").click()
+        driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]").click()
         time.sleep(3)
         driver.find_element_by_id('add_manual_cp').click()
         time.sleep(3)

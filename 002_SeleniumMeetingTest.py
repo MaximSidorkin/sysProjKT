@@ -243,7 +243,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_id('btn_close').click()
         print('тест №17 - создаем поучение и заполняем его форму')
-
+        '''
     def test018_FindDTMeetingInReport(self):
         time.sleep(3)
         driver.find_element_by_link_text("Отчёты").click()
@@ -264,7 +264,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_css_selector('span.find-text').click()
         time.sleep(1)
         driver.find_element_by_xpath('html/body/div[1]/div[2]/nav/div/div[2]/ul[2]/li/ul/li[5]/span[3]').click()
-
         # ответственный клик по квадрату
         time.sleep(2)
         driver.find_element_by_xpath('html/body/div[1]/div[2]/nav/div/div[2]/ul[5]/li/a/span').click()
@@ -275,27 +274,27 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_id('btn_success_executor').click()
         print('тест №18 - находим в отчетах совещание созданное с рабочего стола, путем задание фильтов')
-
-    def test019_CreateMeetingCopy(self):
+        '''
+    def test018_CreateMeetingCopy(self):
         time.sleep(3)
         driver.find_element_by_link_text("Расписание").click()
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'add-meeting')))
         driver.implicitly_wait(10)
-        driver.find_element_by_xpath("//span[. = '19:02 - 20:02' ]").click()
+        driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]").click()
         time.sleep(3)
         driver.find_element(By.XPATH, ".//*[text()='Создать копию']/..").click()
         time.sleep(3)
         driver.find_element_by_name('yt0').click()
         print('тест №19 - переходим в раздел "Расписание", находим совещание, и создаём его копию')
 
-    def test020_Comment(self):
+    def test019_Comment(self):
         time.sleep(3)
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]").click()
         time.sleep(3)
         print('тест №20 - открываем паспорт совещание')
 
-    def test021_printComment(self):
+    def test020_printComment(self):
         driver.find_element_by_name('notes').click()
         time.sleep(4)
         commentText = driver.find_element_by_id('NoteMeeting').click()  # send_keys('Hello, World!')
@@ -305,12 +304,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         saveBtn = driver.find_element_by_css_selector('input.btn').click()
         print('тест №21 - создаем комментарий')
 
-    def test022_editComment(self):
+    def test021_editComment(self):
         time.sleep(2)
-        ASeleniumLogin_1.test021_printComment(self)
+        ASeleniumLogin_1.test020_printComment(self)
         print('тест №22 - редактируем комментарий')
 
-    def test023_closeComment(self):
+    def test022_closeComment(self):
         time.sleep(1)
         driver.find_element_by_xpath("//div[@id='notes']/div/div/div[2]/a/i").click()
         print('тест №23 - закрываем форму комментария')

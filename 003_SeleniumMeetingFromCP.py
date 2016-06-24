@@ -223,12 +223,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         # wait.until(EC.element_to_be_clickable((By.XPATH, ".//*[text()='Да']/..")))
         # yesButton.click()
         # time.sleep(2)
-        driver.find_element_by_xpath("//button[2]").click()
+        driver.find_element_by_xpath("//button[4]").click()
         time.sleep(3)
-        driver.find_element_by_name('yt2').click()
+        driver.find_element_by_xpath('//div[3]/div/button').click()
         time.sleep(1)
-        driver.implicitly_wait(15)
-        driver.find_element(By.XPATH, "html/body/div[4]/div[3]/div/button[1]").click()
+        #driver.implicitly_wait(15)
+        #driver.find_element(By.XPATH, "html/body/div[4]/div[3]/div/button[1]").click()
 
 
 
