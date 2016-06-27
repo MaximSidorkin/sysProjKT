@@ -101,7 +101,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.implicitly_wait(10)
         newMeet = driver.find_element_by_xpath("//span[. = '19:01 - 20:01' ]")
         newMeet.click()
-        time.sleep(3)
+        time.sleep(5)
         editButton = driver.find_element_by_xpath("//button[2]").click()
         time.sleep(3)
         project = driver.find_element_by_id('ncp-text').click()
@@ -116,6 +116,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test008_FillingCommissionForm(self):
         # заполняем название поручения
+        time.sleep(3)
         driver.find_element_by_id('Checkpoint_TITLE').send_keys('Название поручения Selenium')
         # автор
         driver.find_element_by_id('Checkpoint_ID_AUTHOR_MISSIONSelectBoxItArrowContainer').click()
@@ -223,7 +224,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №14 - создаем совещание с рабочего стола')
 
     def test015_GotoScheduller(self):
-        time.sleep(3)
+        time.sleep(4)
         driver.find_element_by_link_text("Расписание").click()
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'add-meeting')))
         print('тест №15 - переходим в раздел "Расписание"')
@@ -233,12 +234,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         #driver.implicitly_wait(10)
         newMeet = driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]")
         newMeet.click()
-        time.sleep(3)
+        time.sleep(4)
         print('тест №16 - находим только что созданное совещение')
 
     def test017_AddCommission(self):
         driver.find_element_by_css_selector('i.fa.fa-plus').click()
-        time.sleep(3)
+        time.sleep(4)
         ASeleniumLogin_1.test008_FillingCommissionForm(self)
         time.sleep(2)
         driver.find_element_by_id('btn_close').click()
