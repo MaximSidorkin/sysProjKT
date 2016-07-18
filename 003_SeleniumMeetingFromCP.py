@@ -63,7 +63,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         elemSearch.click()
         elemSearch.send_keys('Selenium')
         elemSearch.send_keys(Keys.ENTER)
-        time.sleep(3)
+        time.sleep(5)
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         print('тест №5 - задаём в фильтре ключевое слово Selenium')
@@ -96,6 +96,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №8 - открываем форму создания КТ')
 
     def test009_FillingCPForm(self):
+        time.sleep(4)
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'create-cp')))
         _ = driver.find_element_by_class_name('warn-cp').text == 'контрольную точку'  # test
         time.sleep(5)
@@ -169,10 +170,13 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test014_MeetingCreate(self):
         time.sleep(6)
         nap = driver.find_element_by_id("DIV_N_REALIZATION_TYPE").click()
-        time.sleep(4)
+        time.sleep(5)
         nap = driver.find_element_by_xpath("html/body/span/span/span[1]/input").send_keys("Совещание" + Keys.ENTER)
-        time.sleep(4)
-        EditProject = driver.find_element_by_name('yt0').click()
+        time.sleep(5)
+        #EditProject = driver.find_element_by_name('yt0').click()
+        driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
+        time.sleep(3)
+        driver.find_element_by_name('yt0').click()
         time.sleep(6)
         EditProject = driver.find_element_by_name('yt0').click()
         time.sleep(6)
