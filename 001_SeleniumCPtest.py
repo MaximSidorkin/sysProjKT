@@ -182,19 +182,16 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test019_triggerDone(self):
         done = driver.find_element_by_xpath('//div[@id="DIV_IS_DONE"]/div/div/div/span[2]').click()
-        time.sleep(1)
+        time.sleep(2)
 
         print('тест №18 устанавливаем триггер выполнено КТ')
 
     def test020_triggerVisible(self):
         visible = driver.find_element_by_xpath('//div[3]/div/div/div/span[2]').click()
-        time.sleep(2)
-        users = driver.find_element_by_css_selector('ul.select2-selection__rendered')#.send_keys("Багреева" + Keys.ENTER)
-        # users = driver.find_element_by_class_name('col-sm-5')
-        users.click()
-        users = driver.find_element_by_xpath('//div[1]/div[2]/div[4]/div/span/span[1]/span/ul/li/input').send_keys(Keys.ENTER)
-        #users.send_keys("Багреева" + Keys.ENTER)
-
+        time.sleep(1)
+        users = driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').click()#.send_keys("Багреева" + Keys.ENTER)
+        time.sleep(1)
+        users = driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').send_keys(Keys.ENTER)
         print('тест №19 устанавливаем триггер видимости КТ')
 
     def test021_AllTriggersClose(self):
@@ -202,7 +199,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         #prior = driver.find_element_by_xpath('//form/div/div[2]/div[18]/div/div/div/label').click()
         time.sleep(1)
-        done = driver.find_element_by_xpath("//div[20]/div/div/div/label").click()
+        done = driver.find_element_by_xpath("//div[@id='DIV_IS_DONE']/div/div/div/label").click()
         time.sleep(1)
         visible = driver.find_element_by_xpath('//div[3]/div/div/div/label').click()
 
