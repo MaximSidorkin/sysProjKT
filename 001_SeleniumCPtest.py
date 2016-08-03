@@ -58,16 +58,16 @@ class ASeleniumLogin_1(unittest.TestCase):
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'create-cp')))
         #btn1 = driver.find_element_by_id("create-cp")
         #btn1.click()
-        time.sleep(2)
+        time.sleep(3)
         assert "ЭОР" in driver.title
         elem = driver.find_element_by_link_text('Поиск')
         elem.click()
-        time.sleep(1)
+        time.sleep(3)
         elemSearch = driver.find_element_by_id('search-text')
         elemSearch.click()
         elemSearch.send_keys('Selenium')
         elemSearch.send_keys(Keys.ENTER)
-        time.sleep(2)
+        time.sleep(4)
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         print('тест №4 в фильтре вводим ключевое слово для поиска "Selenium"')
@@ -90,7 +90,8 @@ class ASeleniumLogin_1(unittest.TestCase):
             driver.find_element_by_id('warn-project')
         except:
             print('test fall')
-        scrollDown = driver.find_element_by_id('parent-text')
+        #scrollDown = driver.find_element_by_id('parent-text')
+        scrollDown = driver.find_element_by_xpath('//div/span/i')
         time.sleep(1)
         #select = Select(scrollDown)
         #select.select_by_visible_text("Тестовый проект созданный Selenium")
