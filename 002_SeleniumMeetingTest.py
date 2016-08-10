@@ -61,8 +61,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №3 - переход в раздел "Расписание"')
 
     def test004_ClickCreateMeeting(self):
-        time.sleep(2)
-        crMeeting = driver.find_element_by_xpath('//div[@id="bs-example-navbar-collapse-3"]/div[6]/div[2]').click()
+        time.sleep(4)
+        crMeeting = driver.find_element_by_xpath("//div[@id='bs-example-navbar-collapse-3']/div[5]/div[2]").click()
         print('тест №4 - нажимаем кнопку "Создать" на открывшейся форме')
 
     def test005_FillingMeetingForm(self):
@@ -321,10 +321,10 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
     # File
-    buf = open("Report.html", 'wb')
+    buf = open("АТ для Совещаний.html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=buf,
-        title='Test the Report',
-        description='Result of tests'
+        title='СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ СОВЕЩАНИЯ ИЗ РАСПИСАНИЯ И РАБОЧЕГО СТОЛА',
+        description='Отчет по тестированию'
     )
     runner.run(suite)
