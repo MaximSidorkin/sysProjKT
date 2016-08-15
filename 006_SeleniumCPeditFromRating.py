@@ -28,11 +28,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         elem = driver.find_element_by_id("LoginForm_password")
         elem.send_keys("ipad")
         elem.send_keys(Keys.RETURN)
+        print('тест №1 - логинимся в систему')
 
     def test002_Not500or404andLoginIsVisible(self):
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
+        print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
         try:
             driver.find_element_by_class_name('hidden-xs')
         except:
@@ -51,14 +53,24 @@ class ASeleniumLogin_1(unittest.TestCase):
         rating = driver.find_element_by_link_text('Отчёт Рейтинги')
         rating.click()
         time.sleep(4)
+        print('тест №3 - переходим в раздел Отчёт Рейтинги')
+
     def test004_FilterSetting(self):
         driver.find_element_by_css_selector('span.title_gears').click()
         time.sleep(1)
         driver.find_element_by_xpath("//div[2]/ul/li[1]/ul/li[1]/div/label[1]/div").click()
         time.sleep(1)
         driver.find_element_by_id('btn_success_gears').click()
-        time.sleep(2)
+        time.sleep(3)
+        print('тест №4 - устанавливаем фильтры')
+
     def test005_EditCP(self):
+        driver.find_element_by_xpath('//ul[3]/li/a/b').click()
+        time.sleep(1)
+        driver.find_element_by_id('btn_executor').click()
+        time.sleep(1)
+        driver.find_element_by_id('btn_success_executor').click()
+        time.sleep(3)
         driver.find_element_by_css_selector('span.cp-title').click()
         time.sleep(3)
         driver.find_element_by_name('yt0').click()
@@ -68,15 +80,16 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_name('yt0').click()
         time.sleep(3)
         driver.find_element_by_xpath("//button[@type='cancel']").click()
+        print('тест №5 - редактируем КТ')
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
     # File
-    buf = open("Report.html", 'wb')
+    buf = open("АТ для КТ из рейтингов.html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=buf,
-        title='Test the Report',
-        description='Result of tests'
+        title='РЕДАКТИРОВАНИЕ КОНТРОЛЬНОЙ ТОЧКИ ИЗ РЕЙТИНГОВ',
+        description='Отчет по тесту'
     )
     runner.run(suite)
