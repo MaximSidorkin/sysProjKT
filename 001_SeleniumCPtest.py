@@ -56,8 +56,6 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test004_OpenForm(self):
         wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'create-cp')))
-        #btn1 = driver.find_element_by_id("create-cp")
-        #btn1.click()
         time.sleep(3)
         assert "ЭОР" in driver.title
         elem = driver.find_element_by_link_text('Поиск')
@@ -90,21 +88,14 @@ class ASeleniumLogin_1(unittest.TestCase):
             driver.find_element_by_id('warn-project')
         except:
             print('test fall')
-        #scrollDown = driver.find_element_by_id('parent-text')
         scrollDown = driver.find_element_by_xpath('//div/span/i')
         time.sleep(1)
-        #select = Select(scrollDown)
-        #select.select_by_visible_text("Тестовый проект созданный Selenium")
         scrollDown.click()
         scrollDown = driver.find_element_by_xpath('//div/div/div[2]/div/input')
         scrollDown.click()
-        scrollDown.send_keys("контрольная точка созданная Selenium")#+ Keys.ARROW_DOWN + Keys.ENTER)
+        scrollDown.send_keys("Тестовый проект созданный Selenium")#+ Keys.ARROW_DOWN + Keys.ENTER)
         time.sleep(2)
-        #scrollDown = driver.find_element_by_xpath('//form/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/ul/li[14]/i')   #span class
-        #scrollDown.click()
-        #time.sleep(1)
         scrollDown = driver.find_element_by_xpath('//a/span/span').click()
-        #scrollDown.click()
         time.sleep(1)
 
         print('тест №6 в форме создания проета выбираем из выпадающего списка родителя для КТ')
@@ -159,10 +150,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
 
         print('тест №14 вводим источник КТ')
-
-    #def test015_scrollDown(self):
-    #    editBtn = driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
-    #    time.sleep(1)
 
     def test016_dateSource(self):
         dateSource = driver.find_element_by_id('Checkpoint_SOURCE_DATE').send_keys('12345' + Keys.ENTER)
@@ -220,7 +207,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         finishBtn = driver.find_element_by_name('yt0').click()
         assert "Error" not in driver.title
-        #linkCheck = driver.find_element_by_xpath('//a[contains(text(),"Yandex")]').click()
 
         print('тест №22 подтверждаем создание КТ')
 
@@ -229,7 +215,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         delete = driver.find_element_by_name('yt2').click()
         time.sleep(7)
         driver.implicitly_wait(10)
-        #_ = wait.until(EC.element_to_be_clickable((By.XPATH, 'html/body/div[3]/div[3]/div/button[1]')))
         delete = driver.find_element_by_xpath('//div[3]/div/button').click()
         time.sleep(1)
 
