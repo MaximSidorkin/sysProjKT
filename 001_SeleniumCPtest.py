@@ -119,27 +119,28 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №9 вводим комментарий КТ')
 
     def test010_Autor(self):
-        autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
-        autorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
-        time.sleep(1)
+        #autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
+        #autorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
+        #time.sleep(1)
 
         print('тест №10 вводим автора КТ')
 
     def test011_Responsible(self):
-        responsibleName = driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
-        responsibleName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath("//div[@id='DIV_ID_RESPONSIBLE']/div/span/span/span/span[2]").click()
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('DIT' + Keys.ENTER)
         time.sleep(1)
-
         print('тест №11 вводим ответственного КТ')
 
     def test012_Executor(self):
         executorName = driver.find_element_by_id('DIV_ID_EXECUTOR').click()
         executorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
         time.sleep(1)
-
+        driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
         print('тест №12 вводим исполнителя КТ')
 
     def test013_deadline(self):
+        time.sleep(1)
         deadline = driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('12345' + Keys.ENTER)
         time.sleep(1)
 
@@ -163,7 +164,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №16 устанавливаем тиггер KPI КТ')
 
     def test018_triggerPrior(self):
-        prior = driver.find_element_by_xpath('//div[@id="DIV_IS_PRIORITY"]/div/div/div/span[2]').click()
+        #prior = driver.find_element_by_xpath('//div[@id="DIV_IS_PRIORITY"]/div/div/div/span[2]').click()
         time.sleep(1)
 
         print('тест №17 устанавливаем триггер приоритет КТ')
@@ -175,19 +176,19 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №18 устанавливаем триггер выполнено КТ')
 
     def test020_triggerVisible(self):
-        visible = driver.find_element_by_xpath('//div[3]/div/div/div/span[2]').click()
+        driver.find_element_by_xpath('//div[3]/div/div/div/span[2]').click()
         time.sleep(1)
-        users = driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').click()#.send_keys("Багреева" + Keys.ENTER)
+        driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').click()
         time.sleep(1)
-        users = driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').send_keys(Keys.ENTER)
+        driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').send_keys(Keys.ENTER)
         print('тест №19 устанавливаем триггер видимости КТ')
 
     def test021_AllTriggersClose(self):
         #kpi = driver.find_element_by_css_selector('span.switch-left').click()
-        time.sleep(1)
+        #time.sleep(1)
         #prior = driver.find_element_by_xpath('//form/div/div[2]/div[18]/div/div/div/label').click()
-        time.sleep(1)
-        done = driver.find_element_by_xpath("//div[@id='DIV_IS_DONE']/div/div/div/label").click()
+        #time.sleep(1)
+        #done = driver.find_element_by_xpath("//div[@id='DIV_IS_DONE']/div/div/div/label").click()
         time.sleep(1)
         visible = driver.find_element_by_xpath('//div[3]/div/div/div/label').click()
 
@@ -195,12 +196,11 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test022_addAttach(self):
         time.sleep(2)
-        addlink = driver.find_element_by_xpath('//div[@id="DIV_FILES"]/div/div/div[2]/ul/li[2]/a/span').click()
-        time.sleep(2)
-        textLink = driver.find_element_by_xpath('//div[2]/div[2]/input').send_keys('Yandex')
-        link = driver.find_element_by_xpath('//div[2]/div[2]/input[2]').send_keys('ya.ru')
-        uploadLink = driver.find_element_by_xpath('//span[3]/span').click()
-
+        #addlink = driver.find_element_by_xpath('//div[@id="DIV_FILES"]/div/div/div[2]/ul/li[2]/a/span').click()
+        #time.sleep(2)
+        #textLink = driver.find_element_by_xpath('//div[2]/div[2]/input').send_keys('Yandex')
+        #link = driver.find_element_by_xpath('//div[2]/div[2]/input[2]').send_keys('ya.ru')
+        #uploadLink = driver.find_element_by_xpath('//span[3]/span').click()
         print('тест №21 добавляем ссылку для КТ')
 
     def test023_confirmCreateCP(self):
