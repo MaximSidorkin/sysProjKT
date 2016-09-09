@@ -104,21 +104,24 @@ class ASeleniumLogin_1(unittest.TestCase):
         nameCP = driver.find_element_by_id('Checkpoint_TITLE').send_keys("Совещание из КТ созданное Selenium")
         time.sleep(2)
         #автор
-        autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
-        #autorName = driver.find_element_by_xpath('//div[9]/div/span/span/span/span[2]')
-        #autorName.click()
-        autorNameText = driver.find_element_by_xpath('html/body/span/span/span[1]/input')
-        autorNameText.send_keys('Б' + Keys.ENTER)
-        time.sleep(2)
+        #autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
+        #autorNameText = driver.find_element_by_xpath('html/body/span/span/span[1]/input')
+        #autorNameText.send_keys('Б' + Keys.ENTER)
+        #time.sleep(2)
         #ответственный
-        responsibleName = driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
-        #responsibleName = driver.find_element_by_xpath('//div[10]/div/span/span/span/span[2]')
-        #responsibleName.click()
+        driver.implicitly_wait(10)
+        responsibleName = driver.find_element_by_xpath("//div[@id='DIV_ID_RESPONSIBLE']/div/span/span/span/span[2]")
+        responsibleName.click()
+        time.sleep(2)
         responsibleNameText = driver.find_element_by_xpath('html/body/span/span/span[1]/input')
         responsibleNameText.send_keys('DIT' + Keys.ENTER)
         time.sleep(2)
+        driver.implicitly_wait(10)
+        time.sleep(2)
+        # куратор
+
         #сроки
-        terms = driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123' + Keys.ENTER)
+        driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123' + Keys.ENTER)
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         print('тест №9 - заполняем форму КТ')
@@ -246,10 +249,15 @@ class ASeleniumLogin_1(unittest.TestCase):
         # wait.until(EC.element_to_be_clickable((By.XPATH, ".//*[text()='Да']/..")))
         # yesButton.click()
         # time.sleep(2)
-        driver.find_element_by_xpath("//button[4]").click()
+        driver.find_element_by_xpath("//button[3]").click()
+
+        # for del uncomment this
+        #driver.find_element_by_xpath("//button[4]").click()
+        #time.sleep(3)
+        #driver.find_element_by_xpath('//div[3]/div/button').click()
+
         time.sleep(3)
-        driver.find_element_by_xpath('//div[3]/div/button').click()
-        time.sleep(1)
+        driver.find_element_by_name('yt0').click()
         #driver.implicitly_wait(15)
         #driver.find_element(By.XPATH, "html/body/div[4]/div[3]/div/button[1]").click()
         print('тест №19 - находим созданное совещание и удаляем его')

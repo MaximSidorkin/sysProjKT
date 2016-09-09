@@ -106,7 +106,7 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
             # File
-    buf = open("Report.html", 'wb')
+    buf = open("АТ для КТ из виджета ВиО в Паспорте Совещания .html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
     stream=buf,
     title=' СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ КТ ИЗ ВИДЖЕТА "ВОПРОСЫ И ОТВЕТЫ" В ПАСПОРТЕ СОВЕЩАНИЯ',
