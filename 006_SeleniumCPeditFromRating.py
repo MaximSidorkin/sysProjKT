@@ -75,7 +75,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_name('yt0').click()
         time.sleep(4)
-        driver.find_element_by_id('Checkpoint_PLANNED_RESULT').send_keys(' Новый комментарий')
+        driver.find_element_by_id('Checkpoint_plannedResult').send_keys(' Новый комментарий')
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
         time.sleep(3)
