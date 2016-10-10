@@ -91,11 +91,11 @@ class ASeleniumLogin_1(unittest.TestCase):
         scrollDown = driver.find_element_by_xpath('//div/span/i')
         time.sleep(1)
         scrollDown.click()
-        scrollDown = driver.find_element_by_xpath('//div/div/div[2]/div/input')
+        scrollDown = driver.find_element_by_xpath('//div[2]/div/div/input')
         scrollDown.click()
         scrollDown.send_keys("Тестовый проект созданный Selenium")#+ Keys.ARROW_DOWN + Keys.ENTER)
         time.sleep(2)
-        scrollDown = driver.find_element_by_xpath('//a/span/span').click()
+        scrollDown = driver.find_element_by_css_selector('div.title-item > span.find-text').click()
         time.sleep(1)
 
         print('тест №6 в форме создания проета выбираем из выпадающего списка родителя для КТ')
@@ -113,7 +113,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №8 вводим имя КТ')
 
     def test009_Comment(self):
-        nameShort = driver.find_element_by_id('Checkpoint_PLANNED_RESULT').send_keys('Комментарий')
+        nameShort = driver.find_element_by_id('Checkpoint_plannedResult').send_keys('Комментарий')
         time.sleep(1)
 
         print('тест №9 вводим комментарий КТ')

@@ -72,7 +72,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//span[. = '19:03 - 20:03' ]").click()
         time.sleep(3)
-        driver.find_element_by_id('add_manual_cp').click()
+        driver.find_element_by_css_selector('a.bg.create-agenda > i.fa.fa-plus').click()
         time.sleep(3)
         driver.find_element_by_id('Agenda_S_NAME').send_keys('Selenium создал очень важный вопрос')
         time.sleep(2)
