@@ -77,7 +77,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(4)
         driver.find_element_by_id('Checkpoint_plannedResult').send_keys(' Новый комментарий')
         time.sleep(2)
-        driver.find_element_by_name('yt0').click()
+        driver.find_element_by_xpath('//form/div/div[3]/span[2]').click()
         time.sleep(3)
         driver.find_element_by_xpath("//button[@type='cancel']").click()
         print('тест №5 - редактируем КТ')
