@@ -79,18 +79,18 @@ class ASeleniumLogin_1(unittest.TestCase):
         # заполняем название поручения
         driver.find_element_by_id('Checkpoint_TITLE').send_keys('Название поручения Selenium')
         # автор
-        driver.find_element_by_xpath('//div/span/span/span/span[2]').click()
+        driver.find_element_by_xpath('//div[7]/div/span/span/span/span[2]').click()
         # driver.find_element_by_link_text('Багреева М.А.').click()
         # участвующие сотрудники
         # driver.find_element_by_css_selector('input.select2-search__field').send_keys('А'+Keys.ENTER)
         # ответственный
         #driver.find_element_by_css_selector("span.select2-selection__arrow").click()
-        driver.find_element_by_xpath('//span/input').send_keys('Абра'+Keys.ENTER)
+        driver.find_element_by_xpath('//span/input').send_keys('А'+Keys.ENTER)
         # deadline
         driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123'+Keys.ENTER)
         time.sleep(1)
         # save
-        driver.find_element_by_id("mission_form_save").click()
+        driver.find_element_by_xpath("//div/div[3]/span[2]").click()
         print('тест №6 - заполняем форму поручения и сохраняем его')
 
     def test009_Del(self):
@@ -99,9 +99,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
         time.sleep(2)
-        driver.find_element_by_id('mission_del').send_keys(Keys.PAGE_DOWN)
+        driver.find_element_by_xpath('//div[3]/span[3]').send_keys(Keys.PAGE_DOWN)
         time.sleep(2)
-        driver.find_element_by_id('mission_del').click()
+        driver.find_element_by_xpath('//div[3]/span[3]').click()
         time.sleep(2)
         driver.find_element(By.XPATH, "//div[3]/div/button").click()
         print('тест №7 - находим созданное поучние и удаляем его')
