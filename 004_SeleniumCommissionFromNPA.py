@@ -33,7 +33,8 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test002_Not500or404andLoginIsVisible(self):
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
-        _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
+        time.sleep(5)
+        #_ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
         print('тест №1 - логинимся в систему')
         try:
             driver.find_element_by_class_name('hidden-xs')
@@ -98,8 +99,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_xpath("//strong[. = 'Название поручения Selenium' ]").click()
         time.sleep(3)
         driver.find_element_by_name('yt2').click()  # find Delete button and click
-        time.sleep(1)
-        driver.find_element_by_xpath('//div/button[1]/span').click() #delete commission
+        time.sleep(3)
+        driver.find_element_by_xpath('//div[3]/div/button').click() #delete commission
         #driver.find_element_by_name('yt0').click()
         #ime.sleep(2)
         #river.find_element_by_xpath('//div[3]/span[3]').send_keys(Keys.PAGE_DOWN)
