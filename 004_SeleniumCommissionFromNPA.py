@@ -94,16 +94,19 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №6 - заполняем форму поручения и сохраняем его')
 
     def test009_Del(self):
-        time.sleep(3)
+        time.sleep(2)
         driver.find_element_by_xpath("//strong[. = 'Название поручения Selenium' ]").click()
-        time.sleep(2)
-        driver.find_element_by_name('yt0').click()
-        time.sleep(2)
-        driver.find_element_by_xpath('//div[3]/span[3]').send_keys(Keys.PAGE_DOWN)
-        time.sleep(2)
-        driver.find_element_by_xpath('//div[3]/span[3]').click()
-        time.sleep(2)
-        driver.find_element(By.XPATH, "//div[3]/div/button").click()
+        time.sleep(3)
+        driver.find_element_by_name('yt2').click()  # find Delete button and click
+        time.sleep(1)
+        driver.find_element_by_xpath('//div/button[1]/span').click() #delete commission
+        #driver.find_element_by_name('yt0').click()
+        #ime.sleep(2)
+        #river.find_element_by_xpath('//div[3]/span[3]').send_keys(Keys.PAGE_DOWN)
+        #time.sleep(2)
+        #driver.find_element_by_xpath('//div[3]/span[3]').click()
+        #time.sleep(2)
+        #driver.find_element(By.XPATH, "//div[3]/div/button").click()
         print('тест №7 - находим созданное поучние и удаляем его')
 
 if __name__ == '__main__':
