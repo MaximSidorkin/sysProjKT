@@ -16,8 +16,8 @@ driver = webdriver.Firefox()
 driver.get("https://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
 time.sleep(3)
-wait = WebDriverWait(driver, 10)
-driver.implicitly_wait(10)
+wait = WebDriverWait(driver, 20)
+driver.implicitly_wait(20)
 
 class ASeleniumLogin_1(unittest.TestCase):
     def test001_LoginInEORDev(self):
@@ -119,10 +119,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №9 вводим комментарий КТ')
 
     def test010_Autor(self):
-        #autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
-        #autorName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Б' + Keys.ENTER)
-        #time.sleep(1)
-
         print('тест №10 вводим автора КТ')
 
     def test011_Responsible(self):
@@ -143,19 +139,16 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         deadline = driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('12345' + Keys.ENTER)
         time.sleep(1)
-
         print('тест №13 вводим дедлайн КТ')
 
     def test014_source(self):
         source = driver.find_element_by_id('Checkpoint_SOURCE').send_keys('Источник')
         time.sleep(1)
-
         print('тест №14 вводим источник КТ')
 
     def test016_dateSource(self):
         dateSource = driver.find_element_by_id('Checkpoint_SOURCE_DATE').send_keys('12345' + Keys.ENTER)
         time.sleep(1)
-
         print('тест №15 вводим дату источника КТ')
 
     def test017_triggerKPI(self):
@@ -166,13 +159,11 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test018_triggerPrior(self):
         #prior = driver.find_element_by_xpath('//div[@id="DIV_IS_PRIORITY"]/div/div/div/span[2]').click()
         time.sleep(1)
-
         print('тест №17 устанавливаем триггер приоритет КТ')
 
     def test019_triggerDone(self):
         done = driver.find_element_by_xpath('//div[@id="DIV_IS_DONE"]/div/div/div/span[2]').click()
         time.sleep(2)
-
         print('тест №18 устанавливаем триггер выполнено КТ')
 
     def test020_triggerVisible(self):
@@ -184,11 +175,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №19 устанавливаем триггер видимости КТ')
 
     def test021_AllTriggersClose(self):
-        #kpi = driver.find_element_by_css_selector('span.switch-left').click()
-        #time.sleep(1)
-        #prior = driver.find_element_by_xpath('//form/div/div[2]/div[18]/div/div/div/label').click()
-        #time.sleep(1)
-        #done = driver.find_element_by_xpath("//div[@id='DIV_IS_DONE']/div/div/div/label").click()
         time.sleep(1)
         visible = driver.find_element_by_xpath('//div[3]/div/div/div/label').click()
 
@@ -196,11 +182,6 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test022_addAttach(self):
         time.sleep(2)
-        #addlink = driver.find_element_by_xpath('//div[@id="DIV_FILES"]/div/div/div[2]/ul/li[2]/a/span').click()
-        #time.sleep(2)
-        #textLink = driver.find_element_by_xpath('//div[2]/div[2]/input').send_keys('Yandex')
-        #link = driver.find_element_by_xpath('//div[2]/div[2]/input[2]').send_keys('ya.ru')
-        #uploadLink = driver.find_element_by_xpath('//span[3]/span').click()
         print('тест №21 добавляем ссылку для КТ')
 
     def test023_confirmCreateCP(self):

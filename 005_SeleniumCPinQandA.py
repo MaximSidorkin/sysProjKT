@@ -13,16 +13,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 
-# global variable
 driver = webdriver.Firefox()
 driver.get("https://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
 time.sleep(2)
-wait = WebDriverWait(driver, 10)
-driver.implicitly_wait(10)
+wait = WebDriverWait(driver, 20)
+driver.implicitly_wait(20)
 
 class ASeleniumLogin_1(unittest.TestCase):
-    def test001_LoginInEORDev(self):
+    def test_001_LoginInEORDev(self):
         assert "Login" in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
@@ -36,7 +35,7 @@ class ASeleniumLogin_1(unittest.TestCase):
             print('ошибка 500!')
         print('тест №1 - логинимся в систему')
 
-    def test002_Not500or404andLoginIsVisible(self):
+    def test_002_Not500or404andLoginIsVisible(self):
         try:
             assert 'Error' not in driver.title
         except:
@@ -49,7 +48,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         except:
             print('test fall')
 
-    def test003_GotoScheduler(self):
+    def test_003_GotoScheduler(self):
         try:
             assert 'Error' not in driver.title
         except:
@@ -66,7 +65,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert 'Error' not in driver.title
         print('тест №3 - переход в раздел "Расписание"')
 
-    def test004_OpenMeetingForm(self):
+    def test_004_OpenMeetingForm(self):
         assert 'Error' not in driver.title
         time.sleep(2)
         driver.implicitly_wait(10)
@@ -91,7 +90,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
         assert 'Error' not in driver.title
 
-    def test005_DelOneQuestion(self):
+    def test_005_DelOneQuestion(self):
         assert 'Error' not in driver.title
         time.sleep(2)
         # task_remove

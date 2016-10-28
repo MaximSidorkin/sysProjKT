@@ -16,11 +16,11 @@ driver = webdriver.Firefox()
 driver.get("https://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
 time.sleep(3)
-wait = WebDriverWait(driver, 10)
-driver.implicitly_wait(10)
+wait = WebDriverWait(driver, 20)
+driver.implicitly_wait(20)
 
 class ASeleniumLogin_1(unittest.TestCase):
-    def test001_LoginInEORDev(self):
+    def test_001_LoginInEORDev(self):
         assert "Login" in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
@@ -30,7 +30,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         elem.send_keys(Keys.RETURN)
         print('тест №1 - логинимся в систему')
 
-    def test002_Not500or404andLoginIsVisible(self):
+    def test_002_Not500or404andLoginIsVisible(self):
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
@@ -40,7 +40,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         except:
             print('test fall')
 
-    def test003_GotoRating(self):
+    def test_003_GotoRating(self):
         time.sleep(2)
         wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'i.entypo-menu')))
@@ -55,7 +55,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(4)
         print('тест №3 - переходим в раздел Отчёт Рейтинги')
 
-    def test004_FilterSetting(self):
+    def test_004_FilterSetting(self):
         driver.find_element_by_css_selector('span.title_gears').click()
         time.sleep(1)
         driver.find_element_by_xpath("//div[2]/ul/li[1]/ul/li[1]/div/label[1]/div").click()
@@ -64,7 +64,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         print('тест №4 - устанавливаем фильтры')
 
-    def test005_EditCP(self):
+    def test_005_EditCP(self):
         driver.find_element_by_xpath('//ul[3]/li/a/b').click()
         time.sleep(1)
         driver.find_element_by_id('btn_executor').click()

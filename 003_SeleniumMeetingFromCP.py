@@ -13,10 +13,10 @@ import HTMLTestRunner
 driver = webdriver.Firefox()
 driver.get("https://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 20)
 
 class ASeleniumLogin_1(unittest.TestCase):
-    def test001_LoginInEORDev(self):
+    def test_001_LoginInEORDev(self):
         assert "Login" in driver.title
         #wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
@@ -27,13 +27,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         elem.send_keys(Keys.RETURN)
         print('тест №1 - логинимся в систему')
 
-    def test002_Not500or404andLoginIsVisible(self):
+    def test_002_Not500or404andLoginIsVisible(self):
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
         print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
 
-    def test003_OpenAllPjct(self):
+    def test_003_OpenAllPjct(self):
         wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'i.entypo-menu')))
         assert "ЭОР" in driver.title
@@ -44,17 +44,15 @@ class ASeleniumLogin_1(unittest.TestCase):
         allpj.click()
         print('тест №3 - переход в раздел "Все проекты"')
 
-    def test004_Not500or404(self):
+    def test_004_Not500or404(self):
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         assert "Error" not in driver.title
         print('тест №4 - проверка страницы на ошибка 500/404')
 
-    def test005_OpenForm(self):
+    def test_005_OpenForm(self):
         wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'create-cp')))
-        #btn1 = driver.find_element_by_id("create-cp")
-        #btn1.click()
         time.sleep(3)
         assert "ЭОР" in driver.title
         elem = driver.find_element_by_link_text('Поиск')
@@ -68,7 +66,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "404" not in driver.title
         print('тест №5 - задаём в фильтре ключевое слово Selenium')
 
-    def test006_FindBlock(self):
+    def test_006_FindBlock(self):
         #находим блок
         findBlock = driver.find_element_by_link_text('Создал Selenium _для редактирования')
         findBlock.click()
@@ -77,7 +75,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "404" not in driver.title
         print('тест №6 - выбираем блок')
 
-    def test007_FindProject(self):
+    def test_007_FindProject(self):
         #находим проект
         findProject = driver.find_element_by_xpath('//div[2]/div[2]/table/tbody/tr/td[1]/h4/strong/a/span')
         findProject.click()
@@ -86,7 +84,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "404" not in driver.title
         print('тест №7 - выбираем проект')
 
-    def test008_CreateCP(self):
+    def test_008_CreateCP(self):
         #создаем контрольную точку
         CreateCP = driver.find_element_by_id('create-cp')
         CreateCP.click()
@@ -95,7 +93,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "404" not in driver.title
         print('тест №8 - открываем форму создания КТ')
 
-    def test009_FillingCPForm(self):
+    def test_009_FillingCPForm(self):
         time.sleep(4)
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'create-cp')))
         _ = driver.find_element_by_class_name('warn-cp').text == 'контрольную точку'  # test
@@ -103,11 +101,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         #имя контрольной точки
         nameCP = driver.find_element_by_id('Checkpoint_TITLE').send_keys("Совещание из КТ созданное Selenium")
         time.sleep(2)
-        #автор
-        #autorName = driver.find_element_by_id('DIV_AUTHOR_MISSION').click()
-        #autorNameText = driver.find_element_by_xpath('html/body/span/span/span[1]/input')
-        #autorNameText.send_keys('Б' + Keys.ENTER)
-        #time.sleep(2)
         #ответственный
         driver.implicitly_wait(10)
         responsibleName = driver.find_element_by_xpath("//div[@id='DIV_ID_RESPONSIBLE']/div/span/span/span/span[2]")
@@ -118,59 +111,43 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.implicitly_wait(10)
         time.sleep(2)
-        # куратор
-
         #сроки
         driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123' + Keys.ENTER)
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         print('тест №9 - заполняем форму КТ')
 
-    def test010_TriggersCPTest(self):
+    def test_010_TriggersCPTest(self):
         EditProject = driver.find_element_by_name('yt0')
         EditProject.send_keys(Keys.PAGE_DOWN)
-        #time.sleep(1)
-        #туда
-        #triggerKPI = driver.find_element_by_xpath("//div[@id='DIV_IS_PRIORITY']/div/div/div/label")
-        #triggerKPI.click()
-        #time.sleep(1)
-        #triggerDone = driver.find_element_by_xpath("//div[@id='DIV_IS_DONE']/div/div/div/span[2]")
-        #triggerDone.click()
         time.sleep(4)
-        #и обратно
-        #triggerKPI.click()
-        #time.sleep(1)
-        #triggerDone.click()
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         print('тест №10 - подтверждаем создание КТ')
 
-    def test011_ConfirmCPCreating(self):
+    def test_011_ConfirmCPCreating(self):
         finishButton = driver.find_element_by_name('yt0').click()
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         time.sleep(5)
         print('тест №11 - проверяем страницу на ошибки')
 
-    def test012_ClickEditButton(self):
+    def test_012_ClickEditButton(self):
         editButton = driver.find_element_by_name('yt0').click()
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         time.sleep(3)
         print('тест №12 - открываем форму редактирования КТ')
 
-    def test013_editCP(self):
+    def test_013_editCP(self):
         EditProject = driver.find_element_by_name('yt0')
         EditProject.send_keys(Keys.PAGE_DOWN)
         time.sleep(3)
-        #triggerKPI = driver.find_element_by_xpath("//div[@id='DIV_IS_PRIORITY']/div/div/div/label").click()
-        #time.sleep(1)
-        #triggerDone = driver.find_element_by_xpath("//div[@id='DIV_IS_DONE']/div/div/div/span[2]").click()
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
         print('тест №13 - проверяем страницу на ошибки')
 
-    def test014_MeetingCreate(self):
+    def test_014_MeetingCreate(self):
         time.sleep(6)
         nap = driver.find_element_by_id("DIV_N_REALIZATION_TYPE").click()
         time.sleep(5)
@@ -188,7 +165,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(5)
         print('тест №14 - устанавливаем форму реализации как Совещание')
 
-    def test015_FillingMeetingForm(self):
+    def test_015_FillingMeetingForm(self):
         time.sleep(5)
         name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Совещение созданное Selenium из КТ')
         time.sleep(1)
@@ -219,47 +196,33 @@ class ASeleniumLogin_1(unittest.TestCase):
         triggerOffer = driver.find_element_by_xpath("//form[@id='meetings-form']/div[14]/div/div/div/span").click()
         print('тест №15 - заполняем форму совещания')
 
-    def test016_ConfirmMeeting(self):
+    def test_016_ConfirmMeeting(self):
         time.sleep(3)
         driver.find_element_by_name('yt0').click()
         print('тест №16 - подтверждаем создание совещания')
 
-    def test017_ConfirmCP(self):
+    def test_017_ConfirmCP(self):
         time.sleep(5)
         t017 = driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
         time.sleep(3)
         t017 = driver.find_element_by_name('yt0').click()
         print('тест №17 - подтверждаем создание КТ')
 
-    def test018_GotoScheduler(self):
+    def test_018_GotoScheduler(self):
         time.sleep(7)
         schedul = driver.find_element_by_link_text("Расписание")
         schedul.click()
         print('тест №18 - переходим в раздел Расписание')
 
-    def test019_FindAndDelMeeting(self):
+    def test_019_FindAndDelMeeting(self):
         time.sleep(7)
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//span[. = '19:03 - 20:03' ]").click()
         time.sleep(5)
-        # driver.find_element(By.XPATH,".//*[text()='Удалить']/..").click()
-        # time.sleep(2)
-        # yesButton = driver.find_element(By.XPATH, ".//*[text()='Да']/..")#.click()
-        # time.sleep(2)
-        # wait.until(EC.element_to_be_clickable((By.XPATH, ".//*[text()='Да']/..")))
-        # yesButton.click()
-        # time.sleep(2)
         driver.find_element_by_xpath("//button[3]").click()
-
-        # for del uncomment this
-        #driver.find_element_by_xpath("//button[4]").click()
-        #time.sleep(3)
-        #driver.find_element_by_xpath('//div[3]/div/button').click()
 
         time.sleep(3)
         driver.find_element_by_name('yt0').click()
-        #driver.implicitly_wait(15)
-        #driver.find_element(By.XPATH, "html/body/div[4]/div[3]/div/button[1]").click()
         print('тест №19 - находим созданное совещание и удаляем его')
 
 if __name__ == '__main__':
