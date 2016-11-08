@@ -97,46 +97,47 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(5)
         editButton = driver.find_element_by_xpath("//button[2]").click()
         time.sleep(3)
-        project = driver.find_element_by_id('ncp-text').click()
+        project = driver.find_element_by_css_selector('span.input-group-addon').click()
         time.sleep(1)
-        project = driver.find_element_by_xpath("//div[@id='ncp-tree-container']/div/input").send_keys('Тестовый проект созданный Selenium edit')
+        project = driver.find_element_by_xpath("//div[2]/div/div/input").send_keys('Тестовый проект созданный Selenium edit')
         time.sleep(1)
         project = driver.find_element_by_css_selector('span.find-text').click()
+        driver.find_element_by_xpath('//div[2]/div/button').click()     # кликнуть по кнопке "выбрать"
         time.sleep(1)
-        missionButton = driver.find_element_by_id('mission-btn').click()
+        missionButton = driver.find_element_by_name('yt0').click()
         time.sleep(2)
         print('тест №7 - находим созданное совещание и редактируем его')
 
+        time.sleep(4)
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath("//span[. = '19:01 - 20:01' ]").click()  # открываем совещание
+        time.sleep(3)
+        driver.find_element_by_css_selector('i.fa.fa-plus').click()  # нажимаем кнопку + и создаём поручение
+
     def test_008_FillingCommissionForm(self):
-        # заполняем название поручения
         time.sleep(3)
         driver.find_element_by_id('Checkpoint_TITLE').send_keys('Название поручения Selenium')
-        # автор
-        driver.find_element_by_id('Checkpoint_ID_AUTHOR_MISSIONSelectBoxItArrowContainer').click()
-        driver.find_element_by_link_text('Багреева М.А.').click()
-        # участвующие сотрудники
-        driver.find_element_by_css_selector('input.select2-search__field').send_keys('А'+Keys.ENTER)
         # ответственный
-        driver.find_element_by_xpath("//form[@id='mission-form']/div/div/div[4]/div/span/span/span/span[2]").click()
-        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('А'+Keys.ENTER)
+        driver.find_element_by_xpath('//div[6]/div/span/span/span/span').click()
+        driver.find_element_by_xpath('//span/input').send_keys('ip'+Keys.ENTER)
         # deadline
         driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123'+Keys.ENTER)
         # проект
-        driver.find_element_by_id('mission-text').click()
-        driver.find_element_by_xpath('//div[10]/div/div[1]/div[2]/div[1]/input').send_keys('Проект для совещаний Se')
+        driver.find_element_by_xpath('//div[2]/div/div/div/div/div/span').click()
+        driver.find_element_by_css_selector('input.form-control').send_keys('Проект для совещаний Se')
         time.sleep(4)
         # находим в выпадающем списке нужный пункт
         driver.implicitly_wait(10)
-        driver.find_element_by_link_text('Проект для совещаний Se').click()
-        # закончит редактирвоание совещания
-        driver.find_element_by_id('mission_create').click()
-        time.sleep(2)
-        driver.find_element_by_id('mission_close').click()
+        time.sleep(1)
+        driver.find_element_by_css_selector('span.find-text').click()
+        time.sleep(1)
+        driver.find_element_by_xpath('//div/div[3]/span[2]').send_keys(Keys.PAGE_DOWN)
+        time.sleep(1)
+        driver.find_element_by_xpath('//div/div[3]/span[2]').click()
         time.sleep(2)
         print('тест №8 - создаем поучение и заполняем его форму')
 
     def test_009_Close(self):
-        driver.find_element_by_name('yt1').click()
         print('тест №9 - подтверждаем создание поручения/закрываем форму')
 
     def test_010_NewCommissionPlus(self):
@@ -147,7 +148,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_css_selector('i.fa.fa-plus').click()
         time.sleep(3)
-        ASeleniumLogin_1.test008_FillingCommissionForm(self)
+        ASeleniumLogin_1.test_008_FillingCommissionForm(self)
         time.sleep(2)
         driver.find_element_by_id('btn_close').click()
         print('тест №10 - создаем поручение непосредственно из паспорта совещания путем нажатия кнопки "+"')
@@ -167,7 +168,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_012_AllDayMeeting(self):
         time.sleep(2)
-        ASeleniumLogin_1.test004_ClickCreateMeeting(self)
+        ASeleniumLogin_1.test_004_ClickCreateMeeting(self)
         time.sleep(2)
         name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('All Day Selenium')
         time.sleep(2)
@@ -229,7 +230,7 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test_017_AddCommission(self):
         driver.find_element_by_css_selector('i.fa.fa-plus').click()
         time.sleep(4)
-        ASeleniumLogin_1.test008_FillingCommissionForm(self)
+        ASeleniumLogin_1.test_008_FillingCommissionForm(self)
         time.sleep(2)
         driver.find_element_by_id('btn_close').click()
         print('тест №17 - создаем поучение и заполняем его форму')
@@ -265,7 +266,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_021_editComment(self):
         time.sleep(2)
-        ASeleniumLogin_1.test020_printComment(self)
+        ASeleniumLogin_1.test_020_printComment(self)
         print('тест №22 - редактируем комментарий')
 
     def test_022_closeComment(self):
