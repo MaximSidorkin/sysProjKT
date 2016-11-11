@@ -229,7 +229,7 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
     # File
-    buf = open("АТ для Совещаний из КТ.html", 'wb')
+    buf = open("at_for_CREATE_MEETING_FROM_CHECKPOINT.html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=buf,
         title='СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ СОВЕЩАНИЯ ИЗ КОНТРОЛЬНОЙ ТОЧКИ',

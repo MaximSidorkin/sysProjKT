@@ -210,7 +210,7 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
     # File
-    buf = open("АТ для КТ из Блока Проектов.html", 'wb')
+    buf = open("at_for_CHECKPOINT_FROM_PROJECT.html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=buf,
         title='СОЗДАНИЕ КОНТРОЛЬНОЙ ТОЧКИ ИЗ БЛОКА ПРОЕКТОВ',

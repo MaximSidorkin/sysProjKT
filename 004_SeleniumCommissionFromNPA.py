@@ -99,7 +99,7 @@ if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
     # File
-    buf = open("АТ для Поручения из НПА.html", 'wb')
+    buf = open("at_for_COMMISSION_FROM_NPA.html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=buf,
         title='СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ ПОРУЧЕНИЯ ИЗ РАЗДЕЛА НПА',
