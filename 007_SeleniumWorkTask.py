@@ -274,7 +274,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         driver.find_element(By.XPATH, "//div[3]/div/button").click()
         print('21. Логинимся за первого пользователя, в разделе\n "Отчёт по контрольным точкам" находим\n рабочее задание и удаляем его')
-
+        #
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
