@@ -30,14 +30,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         elem.send_keys(Keys.RETURN)
 
     def test_002_Not500or404andLoginIsVisible(self):
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
         time.sleep(5)
         print('тест №1 - логинимся в систему')
         try:
             driver.find_element_by_class_name('hidden-xs')
         except:
-            print('test fall')
+            self.fail(print('Не отобразился / не подгрузился логин пользователя'))
 
     def test_003_GotoNPA(self):
         wait = WebDriverWait(driver, 10)

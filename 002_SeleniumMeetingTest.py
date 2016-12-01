@@ -32,14 +32,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №1 - логинимся в систему')
 
     def test_002_Not500or404andLoginIsVisible(self):
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
         print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
         try:
             driver.find_element_by_class_name('hidden-xs')
         except:
-            print('test fall')
+            self.fail(print('Не отобразился / не подгрузился логин пользователя'))
 
     def test_003_GotoScheduler(self):
         time.sleep(3)

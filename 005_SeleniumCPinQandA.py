@@ -30,29 +30,28 @@ class ASeleniumLogin_1(unittest.TestCase):
         elem.send_keys("ipad")
         elem.send_keys(Keys.RETURN)
         try:
-            assert 'Error' not in driver.title
+            assert 'ЭОР - Error' not in driver.title
         except:
-            print('ошибка 500!')
+            self.fail(print('ошибка 500!'))
         print('тест №1 - логинимся в систему')
 
     def test_002_Not500or404andLoginIsVisible(self):
         try:
-            assert 'Error' not in driver.title
+            assert 'ЭОР - Error' not in driver.title
         except:
-            print('ошибка 500!')
-        assert "404" not in driver.title
+            self.fail(print('ошибка 500!'))
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
         print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
         try:
             driver.find_element_by_class_name('hidden-xs')
         except:
-            print('test fall')
+            self.fail(print('test fall'))
 
     def test_003_GotoScheduler(self):
         try:
-            assert 'Error' not in driver.title
+            assert 'ЭОР - Error' not in driver.title
         except:
-            print('ошибка 500!')
+            self.fail(print('ошибка 500!'))
         time.sleep(4)
         wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'i.entypo-menu')))
@@ -62,11 +61,11 @@ class ASeleniumLogin_1(unittest.TestCase):
         schedul = driver.find_element_by_link_text("Расписание")
         schedul.click()
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'add-meeting')))
-        assert 'Error' not in driver.title
+        assert 'ЭОР - Error' not in driver.title
         print('тест №3 - переход в раздел "Расписание"')
 
     def test_004_OpenMeetingForm(self):
-        assert 'Error' not in driver.title
+        assert 'ЭОР - Error' not in driver.title
         time.sleep(2)
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//span[. = '19:03 - 20:03' ]").click()
@@ -88,17 +87,17 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id("btn_close").click()
         print('тест №4 - открываем паспорт совещания и создаём вопрос из виджета путем нажатия на "+" и ввода текста в поле поиска виджета')
 
-        assert 'Error' not in driver.title
+        assert 'ЭОР - Error' not in driver.title
 
     def test_005_DelOneQuestion(self):
-        assert 'Error' not in driver.title
+        assert 'ЭОР - Error' not in driver.title
         time.sleep(2)
         # task_remove
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//span[. = '19:03 - 20:03' ]").click()
         time.sleep(2)
         driver.find_element_by_css_selector('span.task_remove').click()
-        assert not 'Error' in driver.title
+        assert not 'ЭОР - Error' in driver.title
         print('тест №5 - открываем паспорт совещания и удаляем один из вопросов в виджете')
 
 if __name__ == '__main__':

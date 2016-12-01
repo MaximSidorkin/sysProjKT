@@ -28,8 +28,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №1 - логинимся в систему')
 
     def test_002_Not500or404andLoginIsVisible(self):
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
         print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
 
@@ -45,8 +44,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №3 - переход в раздел "Все проекты"')
 
     def test_004_Not500or404(self):
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
         assert "Error" not in driver.title
         print('тест №4 - проверка страницы на ошибка 500/404')
 
@@ -62,8 +59,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         elemSearch.send_keys('Selenium')
         elemSearch.send_keys(Keys.ENTER)
         time.sleep(5)
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №5 - задаём в фильтре ключевое слово Selenium')
 
     def test_006_FindBlock(self):
@@ -71,8 +67,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         findBlock = driver.find_element_by_link_text('Создал Selenium _для редактирования')
         findBlock.click()
         time.sleep(2)
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №6 - выбираем блок')
 
     def test_007_FindProject(self):
@@ -80,8 +75,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         findProject = driver.find_element_by_xpath('//div[2]/div[2]/table/tbody/tr/td[1]/h4/strong/a/span')
         findProject.click()
         time.sleep(2)
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №7 - выбираем проект')
 
     def test_008_CreateCP(self):
@@ -89,8 +83,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         CreateCP = driver.find_element_by_id('create-cp')
         CreateCP.click()
         time.sleep(5)
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №8 - открываем форму создания КТ')
 
     def test_009_FillingCPForm(self):
@@ -113,29 +106,25 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         #сроки
         driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123' + Keys.ENTER)
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №9 - заполняем форму КТ')
 
     def test_010_TriggersCPTest(self):
         EditProject = driver.find_element_by_name('yt0')
         EditProject.send_keys(Keys.PAGE_DOWN)
         time.sleep(4)
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №10 - подтверждаем создание КТ')
 
     def test_011_ConfirmCPCreating(self):
         finishButton = driver.find_element_by_name('yt0').click()
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         time.sleep(5)
         print('тест №11 - проверяем страницу на ошибки')
 
     def test_012_ClickEditButton(self):
         editButton = driver.find_element_by_name('yt0').click()
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         time.sleep(3)
         print('тест №12 - открываем форму редактирования КТ')
 
@@ -143,8 +132,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         EditProject = driver.find_element_by_name('yt0')
         EditProject.send_keys(Keys.PAGE_DOWN)
         time.sleep(3)
-        assert "500" not in driver.title  # проверка на 500/404 ошибку
-        assert "404" not in driver.title
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №13 - проверяем страницу на ошибки')
 
     def test_014_MeetingCreate(self):
@@ -236,9 +224,3 @@ if __name__ == '__main__':
         description='Отчет по тестированию'
     )
     runner.run(suite)
-
-
-
-
-
-

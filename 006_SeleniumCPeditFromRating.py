@@ -38,7 +38,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         try:
             driver.find_element_by_class_name('hidden-xs')
         except:
-            print('test fall')
+            self.fail(print('Не отобразился / не подгрузился логин пользователя'))
 
     def test_003_GotoRating(self):
         time.sleep(2)
