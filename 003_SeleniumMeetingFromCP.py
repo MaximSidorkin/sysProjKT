@@ -1,6 +1,6 @@
 # СОЗДАНИЕ СОВЕЩАНИЯ ИЗ КОНТРОЛЬНОЙ ТОЧКИ
 import time
-import unittest
+import unittest, sys
 global str
 
 from selenium import webdriver
@@ -223,4 +223,5 @@ if __name__ == '__main__':
         title='СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ СОВЕЩАНИЯ ИЗ КОНТРОЛЬНОЙ ТОЧКИ',
         description='Отчет по тестированию'
     )
-    runner.run(suite)
+    ret = not runner.run(suite).wasSuccessful()
+    sys.exit(ret)

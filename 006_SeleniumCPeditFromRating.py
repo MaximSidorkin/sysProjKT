@@ -2,7 +2,7 @@
 import unittest
 import time
 global str
-import HTMLTestRunner
+import HTMLTestRunner, sys
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -92,4 +92,5 @@ if __name__ == '__main__':
         title='РЕДАКТИРОВАНИЕ КОНТРОЛЬНОЙ ТОЧКИ ИЗ РЕЙТИНГОВ',
         description='Отчет по тесту'
     )
-    runner.run(suite)
+    ret = not runner.run(suite).wasSuccessful()
+    sys.exit(ret)

@@ -2,7 +2,7 @@
 import unittest
 import time
 global str
-import HTMLTestRunner
+import HTMLTestRunner, sys
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -213,5 +213,6 @@ if __name__ == '__main__':
         title='СОЗДАНИЕ КОНТРОЛЬНОЙ ТОЧКИ ИЗ БЛОКА ПРОЕКТОВ',
         description='Отчет по тестированию'
     )
-    runner.run(suite)
+    ret = not runner.run(suite).wasSuccessful()
+    sys.exit(ret)
 

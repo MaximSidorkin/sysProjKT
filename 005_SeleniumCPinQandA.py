@@ -3,7 +3,7 @@ import unittest
 import time
 
 import os
-import HTMLTestRunner
+import HTMLTestRunner, sys
 from selenium.webdriver.support.ui import Select
 
 from selenium import webdriver
@@ -110,4 +110,5 @@ if __name__ == '__main__':
     title=' СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ КТ ИЗ ВИДЖЕТА "ВОПРОСЫ И ОТВЕТЫ" В ПАСПОРТЕ СОВЕЩАНИЯ',
     description='Отчет по тесту'
     )
-    runner.run(suite)
+    ret = not runner.run(suite).wasSuccessful()
+    sys.exit(ret)

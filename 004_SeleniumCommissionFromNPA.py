@@ -1,6 +1,6 @@
 # СОЗДАНИЕ ПОРУЧЕНИЯ ИЗ РАЗДЕЛА НПА
 
-import unittest
+import unittest, sys
 import time
 global str
 import HTMLTestRunner
@@ -103,4 +103,5 @@ if __name__ == '__main__':
         title='СОЗДАНИЕ/РЕДАКТИРОВАНИЕ/УДАЛЕНИЕ ПОРУЧЕНИЯ ИЗ РАЗДЕЛА НПА',
         description='Отчет по тестированию'
     )
-    runner.run(suite)
+    ret = not runner.run(suite).wasSuccessful()
+    sys.exit(ret)
