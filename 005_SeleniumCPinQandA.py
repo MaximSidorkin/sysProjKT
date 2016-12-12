@@ -80,11 +80,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
         time.sleep(3)
-        driver.find_element_by_xpath("//input[@type='search']").send_keys('Selenium')
+        driver.find_element_by_xpath('//div[6]/div/div/div/div').click()
         time.sleep(1)
-        driver.find_element_by_xpath("//input[@type='search']").send_keys(Keys.ENTER)
+        driver.find_element_by_css_selector("input.form-control").send_keys('Selenium')
         time.sleep(1)
-        driver.find_element_by_id("btn_close").click()
+        driver.find_element_by_css_selector('span.find-text').click()
+        time.sleep(1)
+        driver.find_element_by_name("yt0").click()
         print('тест №4 - открываем паспорт совещания и создаём вопрос из виджета путем нажатия на "+" и ввода текста в поле поиска виджета')
 
         assert 'ЭОР - Error' not in driver.title
