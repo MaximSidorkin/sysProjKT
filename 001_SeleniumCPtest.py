@@ -164,16 +164,16 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №18 устанавливаем триггер выполнено КТ')
 
     def test020_triggerVisible(self):
-        driver.find_element_by_xpath('//div[3]/div/div/div/span[2]').click()
+        driver.find_element_by_xpath('//div[4]/div/div/div/span[2]').click()
         time.sleep(1)
-        driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').click()
+        driver.find_element_by_xpath('//div[5]/div/span/span/span/ul/li/input').click()
         time.sleep(1)
-        driver.find_element_by_xpath('//div[4]/div/span/span/span/ul/li/input').send_keys(Keys.ENTER)
+        driver.find_element_by_xpath('//div[5]/div/span/span/span/ul/li/input').send_keys(Keys.ENTER)
         print('тест №19 устанавливаем триггер видимости КТ')
 
     def test021_AllTriggersClose(self):
         time.sleep(1)
-        visible = driver.find_element_by_xpath('//div[3]/div/div/div/label').click()
+        visible = driver.find_element_by_xpath('//div[4]/div/div/div/span[2]').click()
 
         print('тест №20 выключаем триггеры выполнено и видимость КТ')
 
@@ -183,6 +183,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test023_confirmCreateCP(self):
         time.sleep(1)
+        driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN)
         finishBtn = driver.find_element_by_name('yt0').click()
         assert "ЭОР - Error" not in driver.title
 

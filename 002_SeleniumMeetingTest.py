@@ -87,6 +87,11 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_name('yt0').click()
         print('тест №6 - подтверждаем создание совещание')
+        try:
+            popUp = driver.find_element_by_css_selector('div.toast-message')
+            print('Всплывающее уведомлние: "',popUp.text, '" - выведено')
+        except:
+            print("I DON'T SEE POPUP")
 
     def test_007_FindAndEditMeeting(self):
         time.sleep(4)
