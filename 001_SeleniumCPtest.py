@@ -163,19 +163,19 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         print('тест №18 устанавливаем триггер выполнено КТ')
 
-    def test020_triggerVisible(self):
-        driver.find_element_by_xpath('//div[4]/div/div/div/span[2]').click()
-        time.sleep(1)
-        driver.find_element_by_xpath('//div[5]/div/span/span/span/ul/li/input').click()
-        time.sleep(1)
-        driver.find_element_by_xpath('//div[5]/div/span/span/span/ul/li/input').send_keys(Keys.ENTER)
-        print('тест №19 устанавливаем триггер видимости КТ')
+    #def test020_triggerVisible(self):
+    #    driver.find_element_by_xpath('//div[4]/div/div/div/span[2]').click()
+    #    time.sleep(1)
+    #    driver.find_element_by_xpath('//div[5]/div/span/span/span/ul/li/input').click()
+    #    time.sleep(1)
+    #    driver.find_element_by_xpath('//div[5]/div/span/span/span/ul/li/input').send_keys(Keys.ENTER)
+    #   print('тест №19 устанавливаем триггер видимости КТ')
 
-    def test021_AllTriggersClose(self):
-        time.sleep(1)
-        visible = driver.find_element_by_xpath('//div[4]/div/div/div/span[2]').click()
+    #def test021_AllTriggersClose(self):
+    #    time.sleep(1)
+    #    visible = driver.find_element_by_xpath('//div[4]/div/div/div/span[2]').click()
 
-        print('тест №20 выключаем триггеры выполнено и видимость КТ')
+    #    print('тест №20 выключаем триггеры выполнено и видимость КТ')
 
     def test022_addAttach(self):
         time.sleep(2)
