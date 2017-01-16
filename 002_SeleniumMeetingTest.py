@@ -10,20 +10,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support.ui import Select
 
 # global variable
 driver = webdriver.Firefox()
 driver.get("https://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
 time.sleep(2)
-wait = WebDriverWait(driver, 20)
-driver.implicitly_wait(20)
+wait = WebDriverWait(driver, 50)
+driver.implicitly_wait(50)
 
 class ASeleniumLogin_1(unittest.TestCase):
     def test_001_LoginInEORDev(self):
-        assert "Login" in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
+        assert "Login" in driver.title
         elem = driver.find_element_by_id("LoginForm_username")
         elem.send_keys("Ipad")
         elem = driver.find_element_by_id("LoginForm_password")
@@ -32,8 +31,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №1 - логинимся в систему')
 
     def test_002_Not500or404andLoginIsVisible(self):
-        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
+        assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
         print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
         try:
             driver.find_element_by_class_name('hidden-xs')
@@ -41,8 +40,6 @@ class ASeleniumLogin_1(unittest.TestCase):
             self.fail(print('Не отобразился / не подгрузился логин пользователя'))
 
     def test_003_GotoScheduler(self):
-        time.sleep(3)
-        wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'i.entypo-menu')))
         menu = driver.find_element_by_css_selector("i.entypo-menu")
         menu.click()
@@ -61,8 +58,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Совещение созданное Selenium')
         invite = driver.find_element_by_id('MeetingsData_S_INVITED').send_keys('Внешнее приглашение Selenium')
-        #unit = driver.find_element_by_css_selector('ul.select2-selection__rendered').click()
-        #unit = driver.find_element_by_xpath('//form/div[5]/div/span/span[1]/span/ul/li/input').send_keys('Соловьев Е' + Keys.ENTER)
         place = driver.find_element_by_id('MeetingsData_S_PLACE').send_keys('Москва')
         responsibleName = driver.find_element_by_xpath('//div[8]/div/span/span/span/span[2]').click()
         time.sleep(2)
@@ -81,7 +76,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         triggerOffer = driver.find_element_by_xpath("//form[@id='meetings-form']/div[13]/div/div/div/span").click()
         driver.save_screenshot('C:\PyTest\inish.png')
         print('тест №5 - заполняем форму создания совещания')
-    #@unittest.skip('Test Skipped1')
 
     def test_006_Confirm(self):
         time.sleep(2)
@@ -95,7 +89,6 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_007_FindAndEditMeeting(self):
         time.sleep(4)
-        driver.implicitly_wait(10)
         newMeet = driver.find_element_by_xpath("//span[. = '19:01 - 20:01' ]")
         newMeet.click()
         time.sleep(5)
@@ -167,7 +160,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         driver.implicitly_wait(15)
         driver.find_element(By.XPATH, "//div[3]/div/button").click()
-        # driver.find_element(By.XPATH, ".//*[text()='Да']/..").click()
         print('тест №11 - удаляем созданное совещание')
 
     def test_012_AllDayMeeting(self):
@@ -183,7 +175,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №12 - создаем совещание на весь день')
 
     def test_013_DelAllDayMeeting(self):
-        #newMeet = driver.find_element_by_xpath("//span[. = 'All Day Selenium' ]").click()
         driver.find_element_by_css_selector('span.fc-title').click()
         time.sleep(2)
         driver.find_element(By.XPATH, ".//*[text()='Удалить']/..").click()
@@ -204,8 +195,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         # имя уникально
         name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Совещание с рабочего стола')
         invite = driver.find_element_by_id('MeetingsData_S_INVITED').send_keys('Внешнее приглашение Selenium')
-        #unit = driver.find_element_by_css_selector('ul.select2-selection__rendered').click()
-        #unit = driver.find_element_by_xpath('//form/div[5]/div/span/span[1]/span/ul/li/input').send_keys('Багреева' + Keys.ENTER)
         place = driver.find_element_by_id('MeetingsData_S_PLACE').send_keys('Москва')
         comment = driver.find_element_by_id('MeetingsData_S_COMMENT').send_keys('комментарий к совещанию')
         meetingDateB = driver.find_element_by_id('MeetingsData_D_START').clear()
@@ -225,7 +214,6 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_016_SearchDTMeeting(self):
         time.sleep(5)
-        #driver.implicitly_wait(10)
         newMeet = driver.find_element_by_xpath("//span[. = '19:08 - 20:08' ]")
         newMeet.click()
         time.sleep(4)
