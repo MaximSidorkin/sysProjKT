@@ -17,7 +17,7 @@ driver = webdriver.Firefox()
 driver.get("https://dev.eor.gosapi.ru/site/login")
 driver.maximize_window()
 time.sleep(2)
-wait = WebDriverWait(driver, 20)
+wait = WebDriverWait(driver, 80)
 driver.implicitly_wait(20)
 
 class ASeleniumLogin_1(unittest.TestCase):
