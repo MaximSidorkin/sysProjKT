@@ -12,7 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 # global variable
 driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/site/login")
+driver.get("https://dev.eor.gosapi.ru/new/")
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)
@@ -68,7 +68,6 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_002_openCalendar(self):
         driver.set_page_load_timeout(20)
-        # _ = wait.until(EC.element_to_be_clickable((By.XPATH, './/*[text()="Календарь"]/..')))
         driver.find_element(By.XPATH, ".//*[text()='Календарь']/..").click()
         try:
             driver.find_element_by_xpath(".//*[text()='Пользователь А Отв.: Афанасьев В.П.']/..").click()
@@ -96,7 +95,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_004_reLogInEOR(self):
         time.sleep(3)
-        driver.get("https://dev.eor.gosapi.ru/site/login")
+        driver.get("https://dev.eor.gosapi.ru/new/")
         wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.caret')))
         driver.find_element_by_css_selector('span.caret').click()
         driver.find_element_by_link_text('Выход').click()
@@ -172,7 +171,6 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test_011_gotoMeet(self):
         time.sleep(1)
         ASeleniumLogin_1.test_005_gotoMeet(self)
-        # print("тест №34 - Переходим в раздел 'Расписание'")
 
     def test_012_searchMeet(self):
         time.sleep(1)
@@ -200,7 +198,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('Запускаем синхронизатор')
         # синхронизируем outlook - ЕОР
         time.sleep(4)
-        driver.get("https://dev.eor.gosapi.ru/ewsup")
+        driver.get("https://dev.eor.gosapi.ru/new/")
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'btn-ewsup')))
         driver.find_element_by_id('btn-ewsup').click()
         try:
@@ -227,12 +225,14 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.implicitly_wait(15)
         driver.find_element(By.XPATH, "//div[3]/div/button").click()
         print(' Перезаходим в ЭОР под пользователем ipad, находим созданное совещание и удаляем его')
+        time.sleep(3)
+        driver.close()
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(unittest.makeSuite(ASeleniumLogin_1))
     # File
-    buf = open("at_for_MEETING.html", 'wb')
+    buf = open("at_for_MEETING_FOR_2_USERS.html", 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=buf,
         title='СОЗДАНИЕ/РЕДАКТИРОВАНИЕ СОВЕЩАНИЯ ИЗ РАСПИСАНИЯ И OUTLOOK ДЛЯ ПОЛЬЗОВАТЕЛЕЙ С УЧЕТНОЙ ЗАПИСЬЮ OUTLOOK И БЕЗ',
