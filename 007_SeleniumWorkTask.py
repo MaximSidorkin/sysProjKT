@@ -201,9 +201,12 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test018_NewUserLogin(self):
         time.sleep(1)
-        body = driver.find_element_by_tag_name('body')
-        body.send_keys(Keys.CONTROL+'t')
-        driver.get("https://dev.eor.gosapi.ru/")
+        #driver.execute_script('window.open("https://dev.eor.gosapi.ru/new","_blank")')
+
+        #body = driver.find_element_by_tag_name('body')
+        #body.send_keys(Keys.CONTROL+'t')
+        #driver.get("https://dev.eor.gosapi.ru/")
+
         wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.caret')))
         driver.find_element_by_css_selector('span.caret').click()
         driver.find_element_by_link_text('Выход').click()
@@ -229,8 +232,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_css_selector('span.title_executor').click()
         driver.find_element_by_id('btn_executor').click()
         time.sleep(1)
-        driver.find_element_by_id('btn_executor').click()
-        time.sleep(1)
+        #driver.find_element_by_id('btn_executor').click()
+        #time.sleep(1)
         # поиск
         wait.until(EC.element_to_be_clickable((By.ID, 'search-show')))
         driver.find_element_by_id('search-show').click()

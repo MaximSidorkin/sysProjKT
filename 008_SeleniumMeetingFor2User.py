@@ -55,7 +55,7 @@ class ASeleniumLogin_1(unittest.TestCase):
               '- Заполняем форму создания совещания для пользоватлея А (ipad)')
 
     def test_001_gotoOutlook(self):
-        time.sleep(1)
+        time.sleep(3)
         driver.set_page_load_timeout(20)
         driver.get("https://owa.mos.ru/")
         print(" Переходим в Outlook")
