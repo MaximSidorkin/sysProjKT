@@ -189,7 +189,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.implicitly_wait(15)
         time.sleep(5)
         # создаем совещание
-        driver.find_element_by_xpath('//tr[23]/td[2]').click()
+        driver.find_element_by_xpath('//tr[94]/td[2]').click()
         time.sleep(2)
         # заполняем форму совещания
         # имя уникально
