@@ -189,12 +189,22 @@ class ASeleniumLogin_1(unittest.TestCase):
         # переходим на рабочий стол
         driver.find_element_by_link_text("Рабочий стол").click()
         driver.implicitly_wait(15)
-        time.sleep(5)
+        time.sleep(10)
         # создаем совещание
         # /table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[92]
-        driver.find_element_by_xpath('//table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[92]').click()
+        _ = wait.until(EC.element_to_be_clickable((By.XPATH, '//tr[94]/td[2]')))
+        try:
+            DT_xp = driver.find_element_by_xpath('//tr[94]/td[2]')
+            DT_xp.click()
+            print(' нашёл XPATH и кликнул')
+            time.sleep(2)
+            #DT_css = driver.find_element_by_css_selector('div.fc-slats > table.93.1')
+            #DT_css.click()
+            #print(' нашёл CSS и кликнул')
+        except:
+            print(' не нашёл, не кликнул')
         #driver.find_element_by_xpath('//tr[82]/td[2]').click()
-        time.sleep(2)
+        time.sleep(3)
         # заполняем форму совещания
         # имя уникально
         name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Совещание с рабочего стола')
