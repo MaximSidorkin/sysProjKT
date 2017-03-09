@@ -82,7 +82,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_xpath('//div[6]/div/div/div/div').click()
         time.sleep(1)
-        driver.find_element_by_css_selector("input.form-control").send_keys('Selenium')
+        driver.find_element_by_css_selector("div.input-group.search-field > input.form-control").send_keys('Selenium')
         time.sleep(1)
         driver.find_element_by_css_selector('span.find-text').click()
         time.sleep(1)

@@ -92,8 +92,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         editButton = driver.find_element_by_xpath("//button[2]").click()
         time.sleep(3)
         project = driver.find_element_by_css_selector('span.input-group-addon').click()
-        time.sleep(1)
-        project = driver.find_element_by_xpath("//div[2]/div/div/input").send_keys('Тестовый проект созданный Selenium edit')
+        time.sleep(2)
+        driver.implicitly_wait(15)
+        project = driver.find_element_by_css_selector("div.input-group.search-field > input.form-control").send_keys('Тестовый проект созданный Selenium edit')
         time.sleep(1)
         project = driver.find_element_by_css_selector('span.find-text').click()
         driver.find_element_by_xpath('//div[2]/div/button').click()     # кликнуть по кнопке "выбрать"
@@ -118,7 +119,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123'+Keys.ENTER)
         # проект
         driver.find_element_by_xpath('//div[2]/div/div/div/div/div/span').click()
-        driver.find_element_by_css_selector('input.form-control').send_keys('Проект для совещаний Se')
+        time.sleep(3)
+        driver.find_element_by_css_selector('div.input-group.search-field > input.form-control').send_keys('Проект для совещаний Se')
         time.sleep(4)
         # находим в выпадающем списке нужный пункт
         driver.implicitly_wait(10)
@@ -189,7 +191,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.implicitly_wait(15)
         time.sleep(5)
         # создаем совещание
-        driver.find_element_by_xpath('//tr[94]/td[2]').click()
+        # /table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[92]
+        driver.find_element_by_xpath('//table/tbody/tr/td/div[2]/div/div[2]/table/tbody/tr[92]').click()
+        #driver.find_element_by_xpath('//tr[82]/td[2]').click()
         time.sleep(2)
         # заполняем форму совещания
         # имя уникально
