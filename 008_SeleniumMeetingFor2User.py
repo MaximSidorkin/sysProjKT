@@ -199,7 +199,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('Запускаем синхронизатор')
         # синхронизируем outlook - ЕОР
         time.sleep(4)
-        driver.get("https://dev.eor.gosapi.ru/new/")
+        driver.get("https://dev.eor.gosapi.ru/new/ewsup/")
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'btn-ewsup')))
         driver.find_element_by_id('btn-ewsup').click()
         try:
