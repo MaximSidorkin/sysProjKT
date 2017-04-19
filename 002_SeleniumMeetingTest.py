@@ -11,10 +11,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
+pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+
 # global variable
 driver = webdriver.Chrome()
-#driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/new/")
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)
@@ -115,13 +117,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('Checkpoint_TITLE').send_keys('Название поручения Selenium')
         # ответственный
         driver.find_element_by_xpath('//div[6]/div/span/span/span/span').click()
-        driver.find_element_by_xpath('//span/input').send_keys('ip'+Keys.ENTER)
+        driver.find_element_by_xpath('//span/input').send_keys('Selenium'+Keys.ENTER)
         # deadline
         driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123'+Keys.ENTER)
         # проект
         driver.find_element_by_xpath('//div[2]/div/div/div/div/div/span').click()
         time.sleep(3)
-        driver.find_element_by_css_selector('div.input-group.search-field > input.form-control').send_keys('Проект для совещаний Se')
+        driver.find_element_by_css_selector('div.input-group.search-field > input.form-control').send_keys('Selenium')
         time.sleep(4)
         # находим в выпадающем списке нужный пункт
         driver.implicitly_wait(10)
@@ -177,7 +179,9 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_013_DelAllDayMeeting(self):
         driver.implicitly_wait(10)
+        time.sleep(3)
         newMeet = driver.find_element_by_xpath(".//*[text()='All Day Selenium']/..").click()
+        #newMeet = driver.find_element_by_xpath("//span[. = 'All Day Selenium' ]").click()
         #driver.find_element_by_css_selector('span.fc-title').click()
         time.sleep(1)
         driver.find_element(By.XPATH, ".//*[text()='Удалить']/..").click()

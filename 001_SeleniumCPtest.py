@@ -11,10 +11,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 
+oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
+pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+
 # global variable
 driver = webdriver.Chrome()
 #driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/new/")
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(3)
 wait = WebDriverWait(driver, 50)
@@ -122,7 +125,7 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test011_Responsible(self):
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//div[@id='DIV_ID_RESPONSIBLE']/div/span/span/span/span[2]").click()
-        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('DIT' + Keys.ENTER)
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Selenium' + Keys.ENTER)
         time.sleep(1)
         print('тест №11 вводим ответственного КТ')
 

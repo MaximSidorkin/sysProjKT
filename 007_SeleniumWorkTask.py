@@ -11,10 +11,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 
+oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
+pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+
 # global variable
 driver = webdriver.Chrome()
 #driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/new/")
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(3)
 wait = WebDriverWait(driver, 25)
@@ -68,7 +71,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test006_FindBlock(self):
         #находим блок
-        findBlock = driver.find_element_by_link_text('Создал Selenium _для редактирования')
+        findBlock = driver.find_element_by_link_text('Selenium')
         findBlock.click()
         time.sleep(1)
         assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
@@ -122,7 +125,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(2)
         driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
         time.sleep(1)
-        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('DIT'+Keys.ENTER)
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Selenium'+Keys.ENTER)
         time.sleep(1)
         driver.find_element_by_id('Checkpoint_DEADLINE').send_keys('123'+Keys.ENTER)
         time.sleep(1)
@@ -158,7 +161,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(5)
         driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
         time.sleep(1)
-        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('ipad'+Keys.ENTER)
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('яIpad'+Keys.ENTER)
         time.sleep(1)
         driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN + Keys.ENTER)
         print("13. Ещё раз переходим в форму редактирования, выбираем нового ответственного \n(ответственный = текущий пользователь) и сохраняем")
@@ -167,7 +170,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_link_text("Рабочий стол").click()
         time.sleep(3)
-        driver.find_element_by_xpath("//div[@id='cps_panel']/div/div/ul/li[2]/a/span[2]/span").click()
+        #driver.find_element_by_xpath("//div[@id='cps_panel']/div/div/ul/li[2]/a/span[2]/span").click()
         time.sleep(1)
         try:
             driver.find_element_by_link_text('Уникальное название Рабочего задания')
@@ -202,21 +205,15 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test018_NewUserLogin(self):
         time.sleep(1)
-        #driver.execute_script('window.open("https://dev.eor.gosapi.ru/new","_blank")')
-
-        #body = driver.find_element_by_tag_name('body')
-        #body.send_keys(Keys.CONTROL+'t')
-        #driver.get("https://dev.eor.gosapi.ru/")
-
         wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.caret')))
         driver.find_element_by_css_selector('span.caret').click()
         driver.find_element_by_link_text('Выход').click()
 
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("login")
+        elem.send_keys("Selenium_01")
         elem = driver.find_element_by_id("LoginForm_password")
-        elem.send_keys("login")
+        elem.send_keys("123")
         elem.send_keys(Keys.RETURN)
         print("18. Открываем новую вкладку и перелогиниваемся под другим пользоватлеме")
 

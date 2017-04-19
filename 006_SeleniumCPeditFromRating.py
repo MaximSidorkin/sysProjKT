@@ -34,6 +34,7 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test_002_Not500or404andLoginIsVisible(self):
         assert "500" not in driver.title  # проверка на 500/404 ошибку
         assert "404" not in driver.title
+        assert "Error" not in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
         print('тест №2 - проверка на 404 и 500 ошибку после ввода логина/пароля')
         try:
@@ -42,7 +43,6 @@ class ASeleniumLogin_1(unittest.TestCase):
             self.fail(print('Не отобразился / не подгрузился логин пользователя'))
 
     def test_003_GotoRating(self):
-        wait = WebDriverWait(driver, 15)
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'i.entypo-menu')))
         assert "ЭОР" in driver.title
         driver.find_element_by_css_selector("i.entypo-menu").click()

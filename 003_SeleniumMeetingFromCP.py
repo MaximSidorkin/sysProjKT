@@ -10,16 +10,18 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 import HTMLTestRunner
 
+oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
+pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+
 driver = webdriver.Chrome()
 #driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/new/")
+driver.get(oracle)
 driver.maximize_window()
 wait = WebDriverWait(driver, 40)
 
 class ASeleniumLogin_1(unittest.TestCase):
     def test_001_LoginInEORDev(self):
         assert "Login" in driver.title
-        #wait = WebDriverWait(driver, 10)
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
         elem.send_keys("Ipad")
@@ -65,7 +67,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_006_FindBlock(self):
         #находим блок
-        findBlock = driver.find_element_by_link_text('Создал Selenium _для редактирования')
+        findBlock = driver.find_element_by_link_text('Selenium')
         findBlock.click()
         time.sleep(2)
         assert "ЭОР - Error" not in driver.title  # проверка на 500/404 ошибку
@@ -101,7 +103,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         responsibleName.click()
         time.sleep(2)
         responsibleNameText = driver.find_element_by_xpath('html/body/span/span/span[1]/input')
-        responsibleNameText.send_keys('DIT' + Keys.ENTER)
+        responsibleNameText.send_keys('Selenium' + Keys.ENTER)
         time.sleep(2)
         driver.implicitly_wait(10)
         time.sleep(2)
@@ -160,15 +162,11 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         invite = driver.find_element_by_id('MeetingsData_S_INVITED').send_keys('Внешнее приглашение Selenium')
         time.sleep(1)
-        #unit = driver.find_element_by_css_selector('ul.select2-selection__rendered').send_keys('Соловьев Е' + Keys.ENTER) # click()
-        #time.sleep(1)
-        #unit = driver.find_element_by_xpath('//form/div[5]/div/span/span[1]/span/ul/li/input').send_keys('Соловьев Е' + Keys.ENTER)
-        #time.sleep(1)
         place = driver.find_element_by_id('MeetingsData_S_PLACE').send_keys('Москва')
         time.sleep(1)
         responsibleName = driver.find_element_by_xpath('//div[9]/div/span/span[1]/span/span[2]').click()
         time.sleep(2)
-        responsibleName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Багреева' + Keys.ENTER)
+        responsibleName = driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('Selenium' + Keys.ENTER)
         time.sleep(1)
         comment = driver.find_element_by_id('MeetingsData_S_COMMENT').send_keys('комментарий к совещанию')
         time.sleep(1)
@@ -176,9 +174,6 @@ class ASeleniumLogin_1(unittest.TestCase):
         meetingDateB = driver.find_element_by_id('MeetingsData_D_START').send_keys('19:03' + Keys.ENTER)
         meetingDateE = driver.find_element_by_id('MeetingsData_D_END').clear()
         meetingDateE = driver.find_element_by_id('MeetingsData_D_END').send_keys('20:03' + Keys.ENTER)
-        #triggerAllDay = driver.find_element_by_css_selector('span.switch-right').click()
-        #time.sleep(1)
-        #triggerAllDay = driver.find_element_by_css_selector('span.switch-left').click()
         time.sleep(1)
         triggerOffer = driver.find_element_by_xpath('//form[@id="meetings-form"]/div[14]/div/div/div/span[2]').click()
         time.sleep(1)

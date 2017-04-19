@@ -11,10 +11,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
+pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+
 # global variable
 driver = webdriver.Chrome()
 #driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/new/")
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)
@@ -25,9 +28,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         assert "Login" in driver.title
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("login")
+        elem.send_keys("Selenium_01")
         elem = driver.find_element_by_id("LoginForm_password")
-        elem.send_keys("login")
+        elem.send_keys("123")
         elem.send_keys(Keys.RETURN)
         print(' логинимся в систему')
 
