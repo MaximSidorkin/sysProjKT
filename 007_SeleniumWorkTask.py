@@ -170,7 +170,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_link_text("Рабочий стол").click()
         time.sleep(3)
-        #driver.find_element_by_xpath("//div[@id='cps_panel']/div/div/ul/li[2]/a/span[2]/span").click()
+        driver.find_element_by_xpath("//div[@id='cps_panel']/div/div/ul/li[2]/a/span[2]/span").click()
         time.sleep(1)
         try:
             driver.find_element_by_link_text('Уникальное название Рабочего задания')
