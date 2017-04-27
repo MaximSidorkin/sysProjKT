@@ -13,8 +13,11 @@ from selenium.webdriver.support.ui import Select
 
 # global variable
 driver = webdriver.Chrome()
-#driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/new/")
+oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
+pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+dev = 'https://dev.eor.gosapi.ru/new/site/login'
+
+driver.get(pgs)
 driver.maximize_window()
 time.sleep(3)
 wait = WebDriverWait(driver, 50)
@@ -25,9 +28,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "Login" in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("Ipad")
+        elem.send_keys("admin")
         elem = driver.find_element_by_id("LoginForm_password")
-        elem.send_keys("ipad")
+        elem.send_keys("adminpass")
         elem.send_keys(Keys.RETURN)
         print('тест №1 - логинимся в систему')
 
