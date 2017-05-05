@@ -13,10 +13,10 @@ from selenium.webdriver.support.ui import Select
 
 oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
 pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 # global variable
 driver = webdriver.Chrome()
-#driver = webdriver.Firefox()
 driver.get(oracle)
 driver.maximize_window()
 time.sleep(3)
@@ -28,7 +28,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "Login" in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("Ipad")
+        elem.send_keys("ipad")
         elem = driver.find_element_by_id("LoginForm_password")
         elem.send_keys("ipad")
         elem.send_keys(Keys.RETURN)
@@ -161,7 +161,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(5)
         driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
         time.sleep(1)
-        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('яIpad'+Keys.ENTER)
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('яadmin'+Keys.ENTER)
         time.sleep(1)
         driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN + Keys.ENTER)
         print("13. Ещё раз переходим в форму редактирования, выбираем нового ответственного \n(ответственный = текущий пользователь) и сохраняем")
@@ -193,6 +193,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('search-show').click()
         driver.find_element_by_id('search-text').send_keys('Уникальное название Рабочего задания')
         driver.find_element_by_id('search-text-push').click()
+        #filter
+        driver.find_element_by_css_selector('span.title_type').click()
+        time.sleep(1)
+        driver.find_element_by_id('btn_type').click()
+        time.sleep(1)
+        driver.find_element_by_id('btn_success_type').click()
+
         print("16. В поиске вводим название созданного рабочего задания")
 
     def test017_SearchWTinReport(self):
@@ -267,6 +274,13 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('search-show').click()
         driver.find_element_by_id('search-text').send_keys('Уникальное название Рабочего задания')
         driver.find_element_by_id('search-text-push').click()
+        #filter
+        driver.find_element_by_css_selector('span.title_type').click()
+        time.sleep(1)
+        driver.find_element_by_id('btn_type').click()
+        time.sleep(1)
+        driver.find_element_by_id('btn_success_type').click()
+
         wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.find-text')))
         driver.find_element_by_css_selector('span.find-text').click()
         wait.until(EC.element_to_be_clickable((By.NAME, 'yt2')))
