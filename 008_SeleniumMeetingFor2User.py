@@ -12,11 +12,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
 pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 # global variable
 driver = webdriver.Chrome()
-#driver = webdriver.Firefox()
-driver.get(oracle)
+driver.get(dev)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)
@@ -46,7 +46,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Пользователь А')
         driver.find_element_by_xpath('//div[8]/div/span/span/span/span[2]').click()
         time.sleep(2)
-        driver.find_element_by_xpath('//body[@id="ui-id-1"]/span/span/span/input').send_keys('Selenium' + Keys.ENTER)
+        driver.find_element_by_xpath('//body[@id="ui-id-1"]/span/span/span/input').send_keys('Афанасьев В' + Keys.ENTER)
         driver.find_element_by_id('MeetingsData_D_START').clear()
         driver.find_element_by_id('MeetingsData_D_START').send_keys('20:22' + Keys.ENTER)
         driver.find_element_by_id('MeetingsData_D_END').clear()
@@ -74,7 +74,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.set_page_load_timeout(20)
         driver.find_element(By.XPATH, ".//*[text()='Календарь']/..").click()
         try:
-            driver.find_element_by_xpath(".//*[text()='Пользователь А Отв.: Selenium Qa.']/..").click()
+            driver.find_element_by_xpath(".//*[text()='Пользователь А Отв.: Афанасьев В.П.']/..").click()
             print(' Совещание созданное в ЭОР найдено')
         except:
             print(' аутглюк завис')
@@ -85,7 +85,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         wait.until(EC.element_to_be_clickable((By.XPATH, '//div[2]/div[2]/div[2]/div/div/input')))
         try:
             _ = driver.find_element_by_xpath(
-                '//div[2]/div[2]/div[2]/div/div/input').text == 'Пользователь А Отв.: Selenium Qa.'
+                '//div[2]/div[2]/div[2]/div/div/input').text == 'Пользователь А Отв.: Афанасьев В.П.'
             print(' Текст названия и ответственного соответствует')
         except:
             self.fail(print(' ОШИБКА!'
@@ -99,15 +99,15 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_004_reLogInEOR(self):
         time.sleep(3)
-        driver.get(oracle)
+        driver.get(dev)
         wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.caret')))
         driver.find_element_by_css_selector('span.caret').click()
         driver.find_element_by_link_text('Выход').click()
         wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("Selenium_01")
+        elem.send_keys("login")
         elem = driver.find_element_by_id("LoginForm_password")
-        elem.send_keys("123")
+        elem.send_keys("login")
         elem.send_keys(Keys.RETURN)
         print(' Перезаходим в систему под пользователем login/login ')
 
@@ -166,9 +166,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_link_text('Выход').click()
         wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("Selenium_01")
+        elem.send_keys("login")
         elem = driver.find_element_by_id("LoginForm_password")
-        elem.send_keys("123")
+        elem.send_keys("login")
         elem.send_keys(Keys.RETURN)
         print(' Перезаходим в систему под пользователем login/login ')
 
@@ -183,7 +183,7 @@ class ASeleniumLogin_1(unittest.TestCase):
             print(' Совещание найдено')
         except:
             self.fail(print(' ОШИБКА!\n'
-                            'совещание не найдено'))
+                            ' совещание не найдено'))
 
     def test_013_gotoOutlook(self):
         time.sleep(1)
@@ -202,8 +202,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('Запускаем синхронизатор')
         # синхронизируем outlook - ЕОР
         time.sleep(4)
-        driver.get('https://task.eor.gosapi.ru/oracle/ewsup/')
-        #driver.get("https://dev.eor.gosapi.ru/new/ewsup/")
+        #driver.get('https://task.eor.gosapi.ru/oracle/ewsup/')
+        driver.get("https://dev.eor.gosapi.ru/new/ewsup/")
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'btn-ewsup')))
         driver.find_element_by_id('btn-ewsup').click()
         try:
