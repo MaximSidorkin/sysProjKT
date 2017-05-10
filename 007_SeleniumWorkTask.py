@@ -161,7 +161,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(5)
         driver.find_element_by_id('DIV_ID_RESPONSIBLE').click()
         time.sleep(1)
-        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('яadmin'+Keys.ENTER)
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys('яipad'+Keys.ENTER)
         time.sleep(1)
         driver.find_element_by_name('yt0').send_keys(Keys.PAGE_DOWN + Keys.ENTER)
         print("13. Ещё раз переходим в форму редактирования, выбираем нового ответственного \n(ответственный = текущий пользователь) и сохраняем")
@@ -199,6 +199,10 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('btn_type').click()
         time.sleep(1)
         driver.find_element_by_id('btn_success_type').click()
+
+        driver.find_element_by_css_selector('span.title_executor').click()
+        driver.find_element_by_id('btn_executor').click()
+        driver.find_element_by_id('btn_success_executor').click()
 
         print("16. В поиске вводим название созданного рабочего задания")
 
@@ -280,6 +284,10 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('btn_type').click()
         time.sleep(1)
         driver.find_element_by_id('btn_success_type').click()
+
+        driver.find_element_by_css_selector('span.title_executor').click()
+        driver.find_element_by_id('btn_executor').click()
+        driver.find_element_by_id('btn_success_executor').click()
 
         wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.find-text')))
         driver.find_element_by_css_selector('span.find-text').click()
