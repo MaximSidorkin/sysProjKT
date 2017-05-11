@@ -173,6 +173,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_xpath("//div[@id='cps_panel']/div/div/ul/li[2]/a/span[2]/span").click()
         time.sleep(1)
         try:
+            wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'Уникальное название Рабочего задания')))
             driver.find_element_by_link_text('Уникальное название Рабочего задания')
             print('14. Переходим на рабочий стол и в последних созданных рабочих \nзадачах/контрольных точках \nпытаемся найти только что созданную нами')
         except:
