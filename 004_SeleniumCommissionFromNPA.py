@@ -12,9 +12,14 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support.ui import Select
 
+oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
+pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+dev = 'https://dev.eor.gosapi.ru/new/site/login'
+
+
 driver = webdriver.Chrome()
 #driver = webdriver.Firefox()
-driver.get("https://dev.eor.gosapi.ru/new/")
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(3)
 wait = WebDriverWait(driver, 50)
@@ -52,6 +57,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_004_FilterSetting(self):
         time.sleep(3)
+        _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.title_executor')))
         driver.find_element_by_css_selector("span.title_executor").click()
         time.sleep(1)
         driver.find_element_by_id("btn_executor").click()
@@ -61,12 +67,14 @@ class ASeleniumLogin_1(unittest.TestCase):
         print('тест №3 - устанавливаем фильтры')
 
     def test_005_SelectRandomNPA(self):
+        _ = wait.until(EC.element_to_be_clickable((By.XPATH, "//table[@id='load_table']/tbody/tr/td[2]")))
         driver.find_element_by_xpath("//table[@id='load_table']/tbody/tr/td[2]").click()
         time.sleep(2)
         print('тест №4 - выбираем случайную КТ')
 
     def test_006_ClickPlus(self):
         time.sleep(1)
+        _ = wait.until(EC.element_to_be_clickable((By.XPATH, "html/body/div/div[2]/div[4]/div/div[1]/div[2]/div/div[2]/div[3]/div/div/div[2]/a")))
         driver.find_element_by_xpath("html/body/div/div[2]/div[4]/div/div[1]/div[2]/div/div[2]/div[3]/div/div/div[2]/a").click()
         time.sleep(2)
         print('тест №5 - кликаем по знакчку + "Создать поручение"')
@@ -87,6 +95,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_009_Del(self):
         time.sleep(2)
+        _ = wait.until(EC.element_to_be_clickable((By.XPATH, "//strong[. = 'Название поручения Selenium' ]")))
         driver.find_element_by_xpath("//strong[. = 'Название поручения Selenium' ]").click()
         time.sleep(3)
         driver.find_element_by_name('yt2').click()  # find Delete button and click
