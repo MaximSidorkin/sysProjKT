@@ -12,10 +12,10 @@ import HTMLTestRunner
 
 oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
 pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
+dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 driver = webdriver.Chrome()
-#driver = webdriver.Firefox()
-driver.get(oracle)
+driver.get(dev)
 driver.maximize_window()
 wait = WebDriverWait(driver, 40)
 
@@ -24,7 +24,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         assert "Login" in driver.title
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("Ipad")
+        elem.send_keys("ipad")
         elem = driver.find_element_by_id("LoginForm_password")
         elem.send_keys("ipad")
         elem.send_keys(Keys.RETURN)
@@ -208,6 +208,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(3)
         driver.find_element_by_name('yt0').click()
         print('тест №19 - находим созданное совещание и удаляем его')
+        time.sleep(2)
+        driver.close()
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
