@@ -51,8 +51,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_css_selector("i.entypo-menu").click()
         _ = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Отчёты")))
         driver.find_element_by_link_text("Отчёты").click()
-        _ = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Отчёт по контрольным точкам")))
-        driver.find_element_by_link_text('Отчёт по контрольным точкам').click()
+        _ = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Отчет по задачам")))
+        driver.find_element_by_link_text('Отчет по задачам').click()
         print('тест №3 - переходим в раздел Отчёт Рейтинги')
 
     def test_004_FilterSetting(self):

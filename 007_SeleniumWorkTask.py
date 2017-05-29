@@ -185,9 +185,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         report = driver.find_element_by_link_text("Отчёты")
         report.click()
         time.sleep(1)
-        report1 = driver.find_element_by_link_text("Отчёт по контрольным точкам")
+        report1 = driver.find_element_by_link_text("Отчет по задачам")
         report1.click()
-        print("15. Переходим в раздел 'Отчёт по контрольным точкам' ")
+        print("15. Переходим в раздел 'Отчет по задачам' ")
 
     def test016_ReportFiltersSetting(self):
         wait.until(EC.element_to_be_clickable((By.ID, 'search-show')))
@@ -235,8 +235,8 @@ class ASeleniumLogin_1(unittest.TestCase):
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'i.entypo-menu')))
         _ = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'Отчёты')))
         driver.find_element_by_link_text("Отчёты").click()
-        _ = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'Отчёт по контрольным точкам')))
-        driver.find_element_by_link_text("Отчёт по контрольным точкам").click()
+        _ = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, 'Отчет по задачам')))
+        driver.find_element_by_link_text("Отчет по задачам").click()
         # настраиваем фильтры и ищем по поиску РЗ
         _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.title_executor')))
         driver.find_element_by_css_selector('span.title_executor').click()
@@ -274,7 +274,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         _ = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, 'hidden-xs')))
         driver.find_element_by_link_text("Отчёты").click()
         time.sleep(1)
-        driver.find_element_by_link_text("Отчёт по контрольным точкам").click()
+        driver.find_element_by_link_text("Отчет по задачам").click()
         wait.until(EC.element_to_be_clickable((By.ID, 'search-show')))
         driver.find_element_by_id('search-show').click()
         driver.find_element_by_id('search-text').send_keys('Уникальное название Рабочего задания')
