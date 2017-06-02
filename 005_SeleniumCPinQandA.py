@@ -2,23 +2,19 @@
 import unittest
 import time
 
-import os
 import HTMLTestRunner, sys
-from selenium.webdriver.support.ui import Select
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support.ui import Select
 
 oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
 pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
 dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 driver = webdriver.Chrome()
-#driver = webdriver.Firefox()
 driver.get(dev)
 driver.maximize_window()
 time.sleep(2)
@@ -83,7 +79,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys("Багреева"+Keys.ENTER)
         time.sleep(2)
-        driver.find_element_by_name('yt0').click()
+        driver.find_element_by_xpath("//span[. = 'Сохранить' ]").click()
         time.sleep(3)
         driver.find_element_by_xpath('//div[6]/div/div/div/div').click()
         time.sleep(1)
@@ -91,7 +87,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         time.sleep(1)
         driver.find_element_by_css_selector('span.find-text').click()
         time.sleep(1)
-        driver.find_element_by_name("yt0").click()
+        driver.find_element_by_xpath("//span[. = 'Сохранить' ]").click()
         print('тест №4 - открываем паспорт совещания и создаём вопрос из виджета путем нажатия на "+" и ввода текста в поле поиска виджета')
 
         assert 'ЭОР - Error' not in driver.title
@@ -106,6 +102,9 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_css_selector('span.task_remove').click()
         assert not 'ЭОР - Error' in driver.title
         print('тест №5 - открываем паспорт совещания и удаляем один из вопросов в виджете')
+
+        time.sleep(3)
+        driver.close()
 
 if __name__ == '__main__':
     suite = unittest.TestSuite()
