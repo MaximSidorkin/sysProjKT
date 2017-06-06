@@ -158,7 +158,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_015_FillingMeetingForm(self):
         time.sleep(5)
-        name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Совещение созданное Selenium из КТ')
+        name = driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Совещание созданное Selenium из КТ')
         time.sleep(1)
         invite = driver.find_element_by_id('MeetingsData_S_INVITED').send_keys('Внешнее приглашение Selenium')
         time.sleep(1)
@@ -203,10 +203,12 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.implicitly_wait(10)
         driver.find_element_by_xpath("//span[. = '19:03 - 20:03' ]").click()
         time.sleep(5)
-        driver.find_element_by_xpath("//button[3]").click()
+        #driver.find_element_by_xpath("//button[3]").click()
+        driver.find_element_by_xpath('//button[4]').click()
 
         time.sleep(3)
-        driver.find_element_by_name('yt0').click()
+        #driver.find_element_by_name('yt0').click()
+        driver.find_element_by_xpath('//div[3]/div/button').click()
         print('тест №19 - находим созданное совещание и удаляем его')
         time.sleep(2)
         driver.close()
