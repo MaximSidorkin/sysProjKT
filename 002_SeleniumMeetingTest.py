@@ -17,7 +17,7 @@ dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 # global variable
 driver = webdriver.Chrome()
-driver.get(dev)
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)

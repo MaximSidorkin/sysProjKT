@@ -17,7 +17,7 @@ dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 # global variable
 driver = webdriver.Chrome()
-driver.get(dev)
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(3)
 wait = WebDriverWait(driver, 25)
@@ -223,7 +223,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
         _ = wait.until(EC.element_to_be_clickable((By.ID, 'LoginForm_username')))
         elem = driver.find_element_by_id("LoginForm_username")
-        elem.send_keys("Selenium_1")
+        elem.send_keys("Selenium_01")
         elem = driver.find_element_by_id("LoginForm_password")
         elem.send_keys("123")
         elem.send_keys(Keys.RETURN)

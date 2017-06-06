@@ -15,7 +15,7 @@ pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
 dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 driver = webdriver.Chrome()
-driver.get(dev)
+driver.get(oracle)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 80)
