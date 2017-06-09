@@ -15,7 +15,7 @@ pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
 dev = 'https://dev.eor.gosapi.ru/new/site/login'
 
 driver = webdriver.Chrome()
-driver.get(oracle)
+driver.get(pgs)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 80)
@@ -77,7 +77,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         #time.sleep(1)
         driver.find_element_by_xpath("//form[@id='agenda-form']/div[3]/div/span/span/span/span[2]").click()
         #time.sleep(1)
-        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys("Багреева"+Keys.ENTER)
+        driver.find_element_by_xpath('html/body/span/span/span[1]/input').send_keys("Selenium"+Keys.ENTER)
         #time.sleep(1)
         driver.find_element_by_xpath("//span[. = 'Сохранить' ]").click()
         time.sleep(1)
