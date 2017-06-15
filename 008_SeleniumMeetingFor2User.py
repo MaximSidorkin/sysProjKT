@@ -13,10 +13,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
 pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
 dev = 'https://dev.eor.gosapi.ru/new/site/login'
+perm = 'http://dev.perm.gosapi.ru/top/'
 
 # global variable
 driver = webdriver.Chrome()
-driver.get(dev)
+driver.get(perm)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)

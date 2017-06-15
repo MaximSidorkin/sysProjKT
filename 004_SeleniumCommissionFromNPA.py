@@ -15,11 +15,11 @@ from selenium.webdriver.support.ui import Select
 oracle = 'https://task.eor.gosapi.ru/oracle/site/login'
 pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
 dev = 'https://dev.eor.gosapi.ru/new/site/login'
-
+perm = 'http://dev.perm.gosapi.ru/top/'
 
 driver = webdriver.Chrome()
 #driver = webdriver.Firefox()
-driver.get(pgs)
+driver.get(perm)
 driver.maximize_window()
 time.sleep(3)
 wait = WebDriverWait(driver, 50)
