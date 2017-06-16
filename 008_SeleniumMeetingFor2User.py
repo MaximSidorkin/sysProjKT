@@ -17,7 +17,7 @@ perm = 'http://dev.perm.gosapi.ru/top/'
 
 # global variable
 driver = webdriver.Chrome()
-driver.get(dev)
+driver.get(pgs)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)
@@ -47,7 +47,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_id('MeetingsData_S_NAME').send_keys('Пользователь А')
         driver.find_element_by_xpath('//div[8]/div/span/span/span/span[2]').click()
         time.sleep(2)
-        driver.find_element_by_xpath('//body[@id="ui-id-1"]/span/span/span/input').send_keys('Афанасьев В' + Keys.ENTER)
+        driver.find_element_by_xpath('//body[@id="ui-id-1"]/span/span/span/input').send_keys('login' + Keys.ENTER)
         driver.find_element_by_id('MeetingsData_D_START').clear()
         driver.find_element_by_id('MeetingsData_D_START').send_keys('20:22' + Keys.ENTER)
         driver.find_element_by_id('MeetingsData_D_END').clear()
@@ -60,6 +60,7 @@ class ASeleniumLogin_1(unittest.TestCase):
               '- Заполняем форму создания совещания для пользоватлея А (ipad)')
 
     def test_001_gotoOutlook(self):
+        self.skipTest(self)
         time.sleep(3)
         driver.set_page_load_timeout(20)
         driver.get("https://owa.mos.ru/")
@@ -72,6 +73,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         elem.send_keys(Keys.RETURN)
 
     def test_002_openCalendar(self):
+        self.skipTest(self)
         driver.set_page_load_timeout(20)
         driver.find_element(By.XPATH, ".//*[text()='Календарь']/..").click()
         try:
@@ -83,6 +85,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         driver.find_element_by_xpath(".//*[text()='ИЗМЕНИТЬ']/..").click()
 
     def test_003_ConfirmField(self):
+        self.skipTest(self)
         wait.until(EC.element_to_be_clickable((By.XPATH, '//div[2]/div[2]/div[2]/div/div/input')))
         try:
             _ = driver.find_element_by_xpath(
@@ -100,7 +103,7 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_004_reLogInEOR(self):
         time.sleep(3)
-        driver.get(dev)
+        driver.get(pgs)
         wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'span.caret')))
         driver.find_element_by_css_selector('span.caret').click()
         driver.find_element_by_link_text('Выход').click()
@@ -123,8 +126,27 @@ class ASeleniumLogin_1(unittest.TestCase):
             driver.find_element_by_xpath("//span[. = '20:22 - 20:52' ]")
             print(' Совещание найдено')
         except:
-            self.fail(print(' ОШИБКА!\n'
-                            'совещание не найдено'))
+            self.fail(print(' ОШИБКА!\nсовещание не найдено'))
+        try:
+            driver.find_element_by_css_selector('span.badge.badge-secondary')
+            print(' Пользователю пришло уведомление')
+        except:
+            self.fail(print(' ОШИБКА!\nуведомлние отсутствует'))
+        try:
+            driver.find_element_by_css_selector('span.badge.badge-secondary').click()
+            print(' ОТКРЫВАЕМ УВЕДОМЛЕНИЯ')
+            time.sleep(1)
+            driver.find_element_by_css_selector('span.open-passport-link').click()
+            print(' ОТКРЫВАЕМ ССЫЛКУ НА МОДАЛЬНОЕ ОКНО - ПОСЛЕДНЕЕ ИЗ УВЕДОМЛЕНИЙ')
+            time.sleep(1)
+            _= driver.find_element_by_css_selector('span.question-link.passport-title').text == 'Пользователь А'
+            print(' УДОСТОВЕРЯЕМСЯ, ЧТО НАЗВАНИЕ СООТВЕТСТВУЕТ')
+            time.sleep(1)
+            driver.find_element_by_xpath('//div[11]/div/button').click()
+        except:
+            print('NE POLUCHILOS :(')
+            driver.find_element_by_xpath('//div[11]/div/button').click()
+
 
     def test_007_reLogInEOR(self):
         time.sleep(1)
@@ -183,10 +205,15 @@ class ASeleniumLogin_1(unittest.TestCase):
             driver.find_element_by_xpath("//span[. = '20:23 - 20:52' ]")
             print(' Совещание найдено')
         except:
-            self.fail(print(' ОШИБКА!\n'
-                            ' совещание не найдено'))
+            self.fail(print(' ОШИБКА!\n совещание не найдено'))
+        try:
+            driver.find_element_by_css_selector('span.badge.badge-secondary')
+            print(' Пользователю пришло уведомление')
+        except:
+            self.fail(print(' ОШИБКА!\nуведомлние отсутствует'))
 
     def test_013_gotoOutlook(self):
+        self.skipTest(self)
         time.sleep(1)
         driver.get("https://owa.mos.ru/")
         driver.set_page_load_timeout(20)
@@ -200,6 +227,7 @@ class ASeleniumLogin_1(unittest.TestCase):
         print(' Переходим в Outlook, раздел календарь редактируем совещание')
 
     def test_014_gotoEOR(self):
+        self.skipTest(self)
         print('Запускаем синхронизатор')
         # синхронизируем outlook - ЕОР
         time.sleep(4)
@@ -224,13 +252,13 @@ class ASeleniumLogin_1(unittest.TestCase):
     def test_015_GoodTone(self):
         ASeleniumLogin_1.test_007_reLogInEOR(self)
         ASeleniumLogin_1.test_005_gotoMeet(self)
-        driver.find_element_by_xpath("//span[. = '20:24 - 20:53' ]").click()
+        driver.find_element_by_xpath("//span[. = '20:23 - 20:52' ]").click()
         wait.until(EC.element_to_be_clickable((By.XPATH, ".//*[text()='Удалить']/..")))
         driver.find_element(By.XPATH, ".//*[text()='Удалить']/..").click()
         time.sleep(3)
         driver.implicitly_wait(15)
         driver.find_element(By.XPATH, "//div[3]/div/button").click()
-        print(' Перезаходим в ЭОР под пользователем ipad, находим созданное совещание и удаляем его')
+        print(' Перезаходим в ЭОР под пользователем ipad, находим созданное совещание \n и удаляем его')
         time.sleep(3)
         driver.close()
 
