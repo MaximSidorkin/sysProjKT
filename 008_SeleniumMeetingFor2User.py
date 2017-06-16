@@ -17,7 +17,7 @@ perm = 'http://dev.perm.gosapi.ru/top/'
 
 # global variable
 driver = webdriver.Chrome()
-driver.get(pgs)
+driver.get(dev)
 driver.maximize_window()
 time.sleep(2)
 wait = WebDriverWait(driver, 120)

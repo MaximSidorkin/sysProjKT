@@ -74,8 +74,8 @@ class ASeleniumLogin_1(unittest.TestCase):
 
     def test_006_ClickPlus(self):
         time.sleep(1)
-        _ = wait.until(EC.element_to_be_clickable((By.XPATH, "html/body/div/div[2]/div[4]/div/div[1]/div[2]/div/div[2]/div[3]/div/div/div[2]/a")))
-        driver.find_element_by_xpath("html/body/div/div[2]/div[4]/div/div[1]/div[2]/div/div[2]/div[3]/div/div/div[2]/a").click()
+        _ = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "i.fa.fa-plus")))
+        driver.find_element_by_css_selector("i.fa.fa-plus").click()
         time.sleep(2)
         print('тест №5 - кликаем по знакчку + "Создать поручение"')
 
