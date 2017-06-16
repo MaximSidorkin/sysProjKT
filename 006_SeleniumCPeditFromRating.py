@@ -18,7 +18,7 @@ pgs = 'https://task.eor.gosapi.ru/pgs/site/login'
 dev = 'https://dev.eor.gosapi.ru/new/site/login'
 perm = 'http://dev.perm.gosapi.ru/top/'
 
-driver.get(perm)
+driver.get(pgs)
 driver.maximize_window()
 time.sleep(3)
 wait = WebDriverWait(driver, 50)
