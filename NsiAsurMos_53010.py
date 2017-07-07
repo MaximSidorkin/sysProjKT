@@ -19,7 +19,7 @@ driver = webdriver.Chrome()
 wait = WebDriverWait(driver, 960)
 driver.implicitly_wait(20)
 
-f = open(r'C:\asur_export_data\data3.txt')
+f = open(r'C:\asur_export_data\data1.txt')
 line = f.readline()
 
 class StartTask(unittest.TestCase):
@@ -93,12 +93,12 @@ class StartTask(unittest.TestCase):
         xml_zip.close()
         os.chdir(r'C:\asur_export_data\\')
         try:
-            os.path.exists(r'C:\asur_export_data\54203.xml')
-            os.remove(r'C:\asur_export_data\54203.xml')
+            os.path.exists(r'C:\asur_export_data\53010.xml')
+            os.remove(r'C:\asur_export_data\53010.xml')
             print(' Удаляем старый файл')
         except:
             print(' старый файл не обнаружен')
-        os.rename(name,'54203.xml')
+        os.rename(name,'53010.xml')
         os.remove(r'C:\asur_export_data\\' + line + ".zip")
 
 if __name__ == "__main__":
