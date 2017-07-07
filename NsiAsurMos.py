@@ -92,6 +92,12 @@ class StartTask(unittest.TestCase):
         xml_zip.extract(name,r'C:\test_data\\')
         xml_zip.close()
         os.chdir(r'C:\test_data\\')
+        try:
+            os.path.exists(r'C:\test_data\53010.xml')
+            os.remove(r'C:\test_data\53010.xml')
+            print(' Удаляем старый файл')
+        except:
+            print(' старый файл не обнаружен')
         os.rename(name,'53012.xml')
         os.remove(r'C:\test_data\\' + line + ".zip")
 
